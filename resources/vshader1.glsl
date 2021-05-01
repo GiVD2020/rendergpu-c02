@@ -8,6 +8,13 @@ uniform mat4 projection;
 
 out vec4 color;
 
+struct MaterialComponents{
+    vec3 ka;
+    vec3 kd;
+    vec3 ks;
+    float shine;
+};
+
 void main()
 {
     gl_Position = projection*model_view*vPosition;

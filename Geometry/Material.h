@@ -38,5 +38,9 @@ private:
     vec3 specular;
     float shiness;
 
+    GLuint kd;
+    GLuint ka;
+    GLuint ks;
+    GLuint beta;
 };
 
