@@ -72,6 +72,8 @@ void Object::toGPU(shared_ptr<QGLShaderProgram> pr) {
 
     glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0,  (void*)(sizeof(point4)*Index));
     glEnableVertexAttribArray(1);
+    material = new Material();
+    material->toGPU(pr);
 }
 
 

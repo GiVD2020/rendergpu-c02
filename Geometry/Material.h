@@ -38,7 +38,7 @@ private:
     vec4 ambiental;
     vec4 diffuse;
     vec4 specular;
-    float shiness;
+    GLfloat shiness;
 
     struct {
         GLuint ka;
