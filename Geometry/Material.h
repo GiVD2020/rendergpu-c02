@@ -20,9 +20,11 @@ using namespace Common;
 #include <Geometry/Animation.h>
 #include <Geometry/Cara.h>
 
-typedef vec3  point3;
+//typedef vec3  point3;
+typedef vec4 point4;
 
 using namespace std;
+
 // TO DO: A canviar a la fase 1 de la practica 2
 // Classe que representa els materials d'un objecte
 class Material {
@@ -33,14 +35,16 @@ public:
 
     void toGPU(shared_ptr<QGLShaderProgram> program);
 private:
-    vec3 ambiental;
-    vec3 diffuse;
-    vec3 specular;
+    vec4 ambiental;
+    vec4 diffuse;
+    vec4 specular;
     float shiness;
 
-    GLuint kd;
-    GLuint ka;
-    GLuint ks;
-    GLuint beta;
+    struct {
+        GLuint ka;
+        GLuint kd;
+        GLuint ks;
+        GLuint shine;
+    }MaterialGPU;
 };
 

@@ -9,15 +9,17 @@ uniform mat4 projection;
 out vec4 color;
 
 struct MaterialComponents{
-    vec3 ka;
-    vec3 kd;
-    vec3 ks;
+    vec4 ka;
+    vec4 kd;
+    vec4 ks;
     float shine;
 };
+
+uniform MaterialComponents materials; //It'll be uniform
 
 void main()
 {
     gl_Position = projection*model_view*vPosition;
     gl_Position = gl_Position/gl_Position.w;
-    color = vColor;
+    color = materials.ka;
 }
