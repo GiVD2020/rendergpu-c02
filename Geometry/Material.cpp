@@ -2,9 +2,10 @@
 
 
 Material::Material() {
+    // This values are done in order to test that material goes to GPU
     this->ambiental = vec4(1.0, 0.0, 0.0, 1.0);
-    this->diffuse = vec4(0.6, 0.6, 0.6, 1.0);
-    this->specular = vec4(1.0, 1.0, 1.0, 1.0);
+    this->diffuse = vec4(0.0, 1.0, 0.0, 1.0);
+    this->specular = vec4(0.0, 0.0, 1.0, 1.0);
     this->shiness = 1.0;
 }
 
@@ -19,9 +20,9 @@ void Material::toGPU(shared_ptr<QGLShaderProgram> program){
     MaterialGPU.ks = program->uniformLocation("materials.ks");
     MaterialGPU.shine = program->uniformLocation("materials.shine");
 
-    glUniform3fv(MaterialGPU.ka, 1, ambiental);
-    glUniform3fv(MaterialGPU.kd, 1, diffuse);
-    glUniform3fv(MaterialGPU.ks, 1, specular);
+    glUniform4fv(MaterialGPU.ka, 1, ambiental);
+    glUniform4fv(MaterialGPU.kd, 1, diffuse);
+    glUniform4fv(MaterialGPU.ks, 1, specular);
     glUniform1f(MaterialGPU.shine, shiness);
 
     qDebug() << "Material Sended to GPU" ;
