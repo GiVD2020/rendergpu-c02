@@ -87,7 +87,7 @@ void Scene::setLightActual(shared_ptr<Light> l){
  */
 void Scene::lightsToGPU(shared_ptr<QGLShaderProgram> program){
 // TO DO: A implementar a la fase 1 de la practica 2
-    for (int i = 0; i < 1; ++i) { // NO PUEDE DAR MAS ITERACIONES QUE LUCES TIENE PUESTAS
+    for (int i = 0; i < lights.size() && 5; ++i) { // NO PUEDE DAR MAS ITERACIONES QUE LUCES TIENE PUESTAS
             lightsGPU[i].ia = program->uniformLocation(QString("lights[%1].ia").arg(i));
             lightsGPU[i].id = program->uniformLocation(QString("lights[%1].id").arg(i));
             lightsGPU[i].is = program->uniformLocation(QString("lights[%1].is").arg(i));
