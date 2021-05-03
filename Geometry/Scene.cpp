@@ -11,8 +11,8 @@ Scene::Scene() {
     capsaMinima.p = 2;
     lightAmbientGlobal = vec3(0.2, 0.2, 0.2);
 
-    auto li = make_shared<Light>(Puntual);
-    lights.push_back(li);
+    //auto li = make_shared<Light>(Puntual);
+    //lights.push_back(li);
 }
 
 /**
@@ -39,6 +39,8 @@ void Scene::toGPU(shared_ptr<QGLShaderProgram> p) {
     for(unsigned int i=0; i < objects.size(); i++){
         objects.at(i)->toGPU(p);
     }
+    qDebug() << "Metiendo luces en el GPU";
+    lightsToGPU(p);
 }
 
 /**
@@ -85,7 +87,7 @@ void Scene::setLightActual(shared_ptr<Light> l){
  */
 void Scene::lightsToGPU(shared_ptr<QGLShaderProgram> program){
 // TO DO: A implementar a la fase 1 de la practica 2
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 1; ++i) { // NO PUEDE DAR MAS ITERACIONES QUE LUCES TIENE PUESTAS
             lightsGPU[i].ia = program->uniformLocation(QString("lights[%1].ia").arg(i));
             lightsGPU[i].id = program->uniformLocation(QString("lights[%1].id").arg(i));
             lightsGPU[i].is = program->uniformLocation(QString("lights[%1].is").arg(i));

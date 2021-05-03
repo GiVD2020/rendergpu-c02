@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 #include <library/Common.h>
-
+#include <QDebug>
 
 #include <Geometry/Object.h>
 #include <Geometry/Light.h>

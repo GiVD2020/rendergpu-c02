@@ -45,6 +45,8 @@ void GLWidget::initializeGL() {
     auto l  = make_shared<Light>(Puntual);
     scene->addLight(l);
 
+    scene->lightsToGPU(program);
+
     scene->camera->init(this->size().width(), this->size().height(), scene->capsaMinima);
     emit ObsCameraChanged(scene->camera);
     emit FrustumCameraChanged(scene->camera);
@@ -109,6 +111,7 @@ void GLWidget::initShader(const char* vShaderFile, const char* fShaderFile){
     program->addShader(fshader);
     program->link();
     program->bind();
+    //scene->lightsToGPU(program);
 }
 
 /** Gestio de les animacions i la gravació d'imatges ***/
