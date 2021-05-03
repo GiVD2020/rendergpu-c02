@@ -30,5 +30,13 @@ class Light {
 
         LightType getTipusLight() const;
         void setTipusLight(const LightType &value);
+
+    private:
+        vec4 lightPosition;
+        vec3 ambiental;
+        vec3 diffuse;
+        vec3 specular;
+        vec3 coeficients;
+        LightType typo;
 };
 
