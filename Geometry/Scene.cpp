@@ -113,7 +113,8 @@ void Scene::addLight(shared_ptr<Light> l) {
  */
 void Scene::setAmbientToGPU(shared_ptr<QGLShaderProgram> program){
     // TO DO: A implementar a la fase 1 de la practica 2
-
+    lightAmbientGlobalToGPU = program->uniformLocation("iAmbientGlobal");
+    glUniform3fv(lightAmbientGlobalToGPU, 1, this->lightAmbientGlobal);
 }
 
 /**

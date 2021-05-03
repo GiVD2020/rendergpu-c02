@@ -45,7 +45,9 @@ void GLWidget::initializeGL() {
     auto l  = make_shared<Light>(Puntual);
     scene->addLight(l);
 
+    // Sending lights to GPU
     scene->lightsToGPU(program);
+    scene->setAmbientToGPU(program);
 
     scene->camera->init(this->size().width(), this->size().height(), scene->capsaMinima);
     emit ObsCameraChanged(scene->camera);

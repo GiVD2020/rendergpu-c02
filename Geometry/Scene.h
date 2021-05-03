@@ -36,6 +36,7 @@ class Scene {
 public:
 
     lightGPU lightsGPU[5]; //If you change num remember vertexShader
+    GLuint lightAmbientGlobalToGPU;
 
     vector<shared_ptr<Object>> objects;
     vector<shared_ptr<Light>>  lights;

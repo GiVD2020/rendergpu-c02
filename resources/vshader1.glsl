@@ -27,10 +27,13 @@ struct LightComponents{
 
 uniform LightComponents lights[5];
 
+uniform vec3 iAmbientGlobal;
+
 void main()
 {
     gl_Position = projection*model_view*vPosition;
     gl_Position = gl_Position/gl_Position.w;
-    color = vec4(lights[0].is, 1.0);
+    color = vec4(iAmbientGlobal, 1.0);
+    //color = vec4(lights[0].is, 1.0);
     //color = vec4(1.0, 0.0, 0.0, 1.0); //This works
 }
