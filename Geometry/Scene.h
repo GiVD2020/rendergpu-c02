@@ -9,9 +9,8 @@
 #include <string>
 #include <stdio.h>
 
-#include <library/vec.h>
 #include <library/Common.h>
-
+#include <QDebug>
 
 #include <Geometry/Object.h>
 #include <Geometry/Light.h>
@@ -23,9 +22,21 @@ using namespace Common;
 // Scene: contains all objects, lights to visualize the scene
 // the viewer is placed in the z+ axis
 
+typedef struct{
+    GLuint ia;
+    GLuint id;
+    GLuint is;
+    GLuint coeficients;
+    GLuint position;
+    //GLuint typeLight;
+}lightGPU;
+
 class Scene {
 
 public:
+
+    lightGPU lightsGPU[5]; //If you change num remember vertexShader
+    GLuint lightAmbientGlobalToGPU;
 
     vector<shared_ptr<Object>> objects;
     vector<shared_ptr<Light>>  lights;

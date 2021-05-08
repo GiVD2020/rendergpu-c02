@@ -17,10 +17,23 @@ struct MaterialComponents{
 
 uniform MaterialComponents materials; //It'll be uniform
 
+struct LightComponents{
+    vec3 ia;
+    vec3 id;
+    vec3 is;
+    vec3 coeficients;
+    vec4 position;
+};
+
+uniform LightComponents lights[5];
+
+uniform vec3 iAmbientGlobal;
+
 void main()
 {
     gl_Position = projection*model_view*vPosition;
     gl_Position = gl_Position/gl_Position.w;
-    color = materials.ks;
+    color = vec4(iAmbientGlobal, 1.0);
+    //color = vec4(lights[0].is, 1.0);
     //color = vec4(1.0, 0.0, 0.0, 1.0); //This works
 }
