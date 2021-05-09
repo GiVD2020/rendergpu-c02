@@ -27,6 +27,13 @@ class Scene {
 
 public:
 
+    typedef enum {
+        VIRTUALWORLD,
+        REALDATA,
+        TEMPORALVW,
+        TEMPORALDATA
+    } DATA_TYPES;
+
     vector<shared_ptr<Object>> objects;
     vector<shared_ptr<Light>>  lights;
 
