@@ -1,4 +1,7 @@
 #include "GeometryBuilders/Builder.h"
+#include "DataService/ConfigMappingReader.h"
+#include "SceneFactoryVirtual.h"
+#include "SceneFactoryData.h"
 
 Builder::Builder(GLWidget *glWid)
 {
@@ -25,8 +28,13 @@ void Builder::newVirtualScene() {
     // Nomes hi hauran fitxers de tipus BoundaryObject.
     // Usa el ConfigMappingReader i la teva SceneFactoryVirtual
     // per a construir l'escena tal i com feies a la practica 1
-
-     emit newScene(scene);
+    shared_ptr<ConfigMappingReader> cmr = make_shared<ConfigMappingReader>("://resources/configMapping.txt");
+    QString fileName = QFileDialog::getOpenFileName();
+    if (!fileName.isNull()) {
+        shared_ptr<SceneFactoryVirtual> sceneFactory = make_shared<SceneFactoryVirtual>(cmr);
+        this->scene = sceneFactory->createScene(fileName);
+        emit newScene(scene);
+    }
 }
 
 
@@ -38,6 +46,13 @@ void Builder::newDataScene()
     // i crear l'escena corresponent.
 
     // Opcionalment pots crear un dialeg per posar els valors del mapping
-    emit newScene(scene);
+    shared_ptr<ConfigMappingReader> cmr = make_shared<ConfigMappingReader>("://resources/configMapping.txt");
+    QString fileName = QFileDialog::getOpenFileName();
+    if (!fileName.isNull()) {
+        shared_ptr<SceneFactoryData> sceneFactory = make_shared<SceneFactoryData>(cmr);
+        this->scene = sceneFactory->createScene(fileName);
+        emit newScene(scene);
+    }
+
 }
 

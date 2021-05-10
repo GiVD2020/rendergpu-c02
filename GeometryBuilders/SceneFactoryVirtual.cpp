@@ -12,3 +12,8 @@ shared_ptr<Scene> SceneFactoryVirtual::createScene(QString filename) {
     vwr->readFile(filename, map);
     return scene;
 }
+
+shared_ptr<Scene> SceneFactoryVirtual::createScene() {
+    auto scene = make_shared<Scene>();
+    return scene;
+}

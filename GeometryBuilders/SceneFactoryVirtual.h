@@ -10,6 +10,6 @@ public:
     SceneFactoryVirtual(shared_ptr<ConfigMappingReader> mapping);
 
     virtual shared_ptr<Scene>  createScene(QString nomFitxer);
+    virtual shared_ptr<Scene>  createScene();
+
 };
-
-

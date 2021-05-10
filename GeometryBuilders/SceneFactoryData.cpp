@@ -36,3 +36,8 @@ shared_ptr<Scene> SceneFactoryData::createScene(QString filename) {
 
     return scene;
 }
+
+shared_ptr<Scene> SceneFactoryData::createScene() {
+    auto scene = make_shared<Scene>();
+    return scene;
+}

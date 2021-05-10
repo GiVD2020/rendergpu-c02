@@ -11,6 +11,8 @@ class SceneFactoryData : public SceneFactory
 public:
     SceneFactoryData(shared_ptr<ConfigMappingReader> mapping);
     virtual shared_ptr<Scene>  createScene(QString nomFitxer);
+    virtual shared_ptr<Scene>  createScene();
+
 
 private:
     vec3 normalPlaBase;

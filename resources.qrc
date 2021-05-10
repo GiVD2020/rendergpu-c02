@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>resources/fshader1.glsl</file>
         <file>resources/vshader1.glsl</file>
+        <file>resources/configMapping.txt</file>
     </qresource>
 </RCC>
