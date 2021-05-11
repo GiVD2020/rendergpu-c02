@@ -31,31 +31,18 @@ void VirtualWorldReader::readFile(QString fileName, shared_ptr<Mapping> map) {
 void VirtualWorldReader::fileLineRead (QString lineReaded) {
 
     QStringList fields = lineReaded.split(",");
+    brObjectFound(fields);
 
-    if(QString::compare("object", fields[0], Qt::CaseInsensitive) == 0)
-        brObjectFound(fields);
-
-    else
-        std::cerr << "Element unknown" << std::endl;
 }
 
 void VirtualWorldReader::brObjectFound(QStringList fields) {
-
-    // TODO Fase 1: Per incloure BrObjecte
-    //  Es suposa que serà una linia del fitxer de l'estil
-    //  brobject, nomDelFitxer, propietats del material, textura
-
-    if (fields.size() != 5 && fields.size() != 16) {
-        std::cerr << "Wrong brObject format" << std::endl;
-        return;
-    }
 
     shared_ptr<Object> o;
 
     vector<vec3> points;
     vector<double> properties;
 
-    o = ObjectFactory::getInstance().createObject(points, properties, -1.0f, fields[1]);
+    o = ObjectFactory::getInstance().createObject(fields[0], -1.0f);
     /*
     if(fields.length() == 5){
         auto mat = make_shared<Lambertian>(vec3(fields[2].toDouble(),fields[3].toDouble(),fields[4].toDouble()));

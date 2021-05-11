@@ -32,11 +32,13 @@ void Builder::newVirtualScene() {
     QString fileName = QFileDialog::getOpenFileName();
     if (!fileName.isNull()) {
         shared_ptr<SceneFactoryVirtual> sceneFactory = make_shared<SceneFactoryVirtual>(cmr);
-        this->scene = sceneFactory->createScene(fileName);
+        auto s = sceneFactory->createScene(fileName);
+        glWidget->setScene(s);
+        this->scene = glWidget->getScene();
         emit newScene(scene);
     }
 }
-
+//"/home/eric/Documents/newGPU/rendergpu-c02/resources/models/sphere1.obj"
 
 void Builder::newDataScene()
 {

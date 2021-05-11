@@ -3,5 +3,6 @@
         <file>resources/fshader1.glsl</file>
         <file>resources/vshader1.glsl</file>
         <file>resources/configMapping.txt</file>
+        <file>resources/models/sphere1.obj</file>
     </qresource>
 </RCC>

@@ -80,7 +80,8 @@ DISTFILES += \
     libWin32/glut.lib \
     libWin32/glut32.dll \
     libWin32/glut32.lib \
-    resources/configMapping.txt
+    resources/configMapping.txt \
+    resources/virtualScene1.txt
 
 unix {
     INCLUDEPATH += /usr/lib/gcc/x86_64-linux-gnu/9/include
