@@ -4,5 +4,8 @@
         <file>resources/vshader1.glsl</file>
         <file>resources/configMapping.txt</file>
         <file>resources/models/sphere1.obj</file>
+        <file>resources/configMappingData.txt</file>
+        <file>resources/data0.txt</file>
+        <file>resources/data10.txt</file>
     </qresource>
 </RCC>

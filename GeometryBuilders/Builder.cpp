@@ -28,14 +28,17 @@ void Builder::newVirtualScene() {
     // Nomes hi hauran fitxers de tipus BoundaryObject.
     // Usa el ConfigMappingReader i la teva SceneFactoryVirtual
     // per a construir l'escena tal i com feies a la practica 1
-    shared_ptr<ConfigMappingReader> cmr = make_shared<ConfigMappingReader>("://resources/configMapping.txt");
-    QString fileName = QFileDialog::getOpenFileName();
-    if (!fileName.isNull()) {
-        shared_ptr<SceneFactoryVirtual> sceneFactory = make_shared<SceneFactoryVirtual>(cmr);
-        auto s = sceneFactory->createScene(fileName);
-        glWidget->setScene(s);
-        this->scene = glWidget->getScene();
-        emit newScene(scene);
+    QString configMapping = QFileDialog::getOpenFileName();
+    if (!configMapping.isNull()) {
+        shared_ptr<ConfigMappingReader> cmr = make_shared<ConfigMappingReader>(configMapping);
+        QString fileName = QFileDialog::getOpenFileName();
+        if (!fileName.isNull()) {
+            shared_ptr<SceneFactoryVirtual> sceneFactory = make_shared<SceneFactoryVirtual>(cmr);
+            auto s = sceneFactory->createScene(fileName);
+            glWidget->setScene(s);
+            this->scene = glWidget->getScene();
+            emit newScene(scene);
+        }
     }
 }
 //"/home/eric/Documents/newGPU/rendergpu-c02/resources/models/sphere1.obj"
@@ -46,15 +49,18 @@ void Builder::newDataScene()
     // del configMapping i el fitxer .txt que conté les dades
     // Utilitza el ConfigMappingReader i la teva SceneFactoryData per a llegir els fitxers
     // i crear l'escena corresponent.
-
-    // Opcionalment pots crear un dialeg per posar els valors del mapping
-    shared_ptr<ConfigMappingReader> cmr = make_shared<ConfigMappingReader>("://resources/configMapping.txt");
-    QString fileName = QFileDialog::getOpenFileName();
-    if (!fileName.isNull()) {
-        shared_ptr<SceneFactoryData> sceneFactory = make_shared<SceneFactoryData>(cmr);
-        this->scene = sceneFactory->createScene(fileName);
-        emit newScene(scene);
+    QString configMapping = QFileDialog::getOpenFileName();
+    if (!configMapping.isNull()) {
+        shared_ptr<ConfigMappingReader> cmr = make_shared<ConfigMappingReader>(configMapping);
+        QString fileName = QFileDialog::getOpenFileName();
+        if (!fileName.isNull()) {
+            shared_ptr<SceneFactoryData> sceneFactory = make_shared<SceneFactoryData>(cmr);
+            auto s = sceneFactory->createScene(fileName);
+            glWidget->setScene(s);
+            this->scene = glWidget->getScene();
+            emit newScene(scene);
+        }
     }
-
+    // Opcionalment pots crear un dialeg per posar els valors del mapping
 }
 

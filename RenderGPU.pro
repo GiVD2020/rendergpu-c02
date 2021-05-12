@@ -21,6 +21,7 @@ SOURCES += \
     Geometry/Light.cpp \
     Geometry/Material.cpp \
     Geometry/Object.cpp \
+    Geometry/Plane.cpp \
     Geometry/Scene.cpp \
     Geometry/TG.cpp \
     Geometry/TranslateTG.cpp \
@@ -47,6 +48,7 @@ HEADERS += \
     Geometry/Light.h \
     Geometry/Material.h \
     Geometry/Object.h \
+    Geometry/Plane.h \
     Geometry/Scene.h \
     Geometry/TG.h \
     Geometry/TranslateTG.h \
@@ -81,6 +83,9 @@ DISTFILES += \
     libWin32/glut32.dll \
     libWin32/glut32.lib \
     resources/configMapping.txt \
+    resources/configMappingData.txt \
+    resources/data0.txt \
+    resources/data10.txt \
     resources/virtualScene1.txt
 
 unix {
