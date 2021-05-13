@@ -34,10 +34,10 @@ shared_ptr<Scene> SceneFactoryData::createScene(QString filename) {
 
     scene->objects.push_back(scene->terra);*/
     vector<vec3> vec;
-    vec.push_back(vec3(-1,0,0));
-    vec.push_back(vec3(1,0,0));
-    vec.push_back(vec3(-1,0,-1));
-    vec.push_back(vec3(1,0,-1));
+    vec.push_back(vec3(-10,0,0));
+    vec.push_back(vec3(10,0,0));
+    vec.push_back(vec3(-10,0,-10));
+    vec.push_back(vec3(10,0,-10));
 
     shared_ptr<Object> o;
     o  = ObjectFactory::getInstance().createPlane(vec);
