@@ -12,7 +12,7 @@ Light::Light(LightType t) {
     this->specular = vec3(0.0, 0.0, 1.0);
     this->coeficients = vec3(1.0, 2.0, 8.0);
     this->typo = t;
-    this->direction = vec3(1.0, 2.0, 8.0);
+    this->direction = vec3(1.0, 0.0, 0.5);
     this->angle = 30.40;
 }
 

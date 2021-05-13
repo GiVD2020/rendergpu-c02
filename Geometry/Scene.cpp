@@ -11,8 +11,8 @@ Scene::Scene() {
     capsaMinima.p = 2;
     lightAmbientGlobal = vec3(0.2, 0.2, 0.2);
 
-    //auto li = make_shared<Light>(Puntual);
-    //lights.push_back(li);
+    auto li = make_shared<Light>(Puntual);
+    lights.push_back(li);
 }
 
 /**
@@ -93,12 +93,17 @@ void Scene::lightsToGPU(shared_ptr<QGLShaderProgram> program){
             lightsGPU[i].is = program->uniformLocation(QString("lights[%1].is").arg(i));
             lightsGPU[i].coeficients = program->uniformLocation(QString("lights[%1].coeficients").arg(i));
             lightsGPU[i].position = program->uniformLocation(QString("lights[%1].position").arg(i));
+            lightsGPU[i].direction = program->uniformLocation(QString("lights[%1].direction").arg(i));
+            lightsGPU[i].angle = program->uniformLocation(QString("lights[%1].angle").arg(i));
+
 
             glUniform3fv(lightsGPU[i].ia, 1, lights[i]->getIa());
             glUniform3fv(lightsGPU[i].id, 1, lights[i]->getId());
             glUniform3fv(lightsGPU[i].is, 1, lights[i]->getIs());
             glUniform3fv(lightsGPU[i].coeficients, 1, lights[i]->getCoeficients());
             glUniform4fv(lightsGPU[i].position, 1, lights[i]->getLightPosition());
+            glUniform3fv(lightsGPU[i].direction, 1, lights[i]->getDirection());
+            glUniform1f(lightsGPU[i].angle, lights[i]->getAngle());
         }
 
 }
