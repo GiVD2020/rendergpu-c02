@@ -1,5 +1,5 @@
 #include "RealDataReader.h"
-
+#include "Geometry/Plane.h"
 
 RealDataReader::RealDataReader(shared_ptr<Scene> s)
 {
@@ -52,8 +52,6 @@ void RealDataReader::dataFound(QStringList fields) {
         double yPlanePos = mapping->getPlaneCenter();
         yPlanePos = -yPlanePos;
 
-
-        vec3 puntBase = vec3(fields[1].toDouble(), yPlanePos, fields[2].toDouble());
         /*
         if (type == ObjectFactory::CYLINDER) {
            o = ObjectFactory::getInstance().createObject(mapping->mapeigPunt(puntBase),

@@ -3,11 +3,13 @@
 
 #include "Geometry/Object.h"
 
-class Plane : public Object
+class Plane: public Object
 {
 public:
-    Plane();
+    Plane(vector<vec3> planeLimits);
     ~Plane();
+private:
+    //shared_ptr<Object> plane;
 };
 
 #endif // PLANE_H
