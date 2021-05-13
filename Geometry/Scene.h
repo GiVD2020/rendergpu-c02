@@ -28,7 +28,7 @@ typedef struct{
     GLuint is;
     GLuint coeficients;
     GLuint position;
-    //GLuint typeLight;
+    GLuint typeLight;
     GLuint direction;
     GLuint angle;
 }lightGPU;

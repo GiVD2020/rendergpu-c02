@@ -25,6 +25,7 @@ struct LightComponents{
     vec4 position;
     vec3 direction;
     float angle;
+    int typeLight;
 };
 
 uniform LightComponents lights[5];
@@ -35,7 +36,11 @@ void main()
 {
     gl_Position = projection*model_view*vPosition;
     gl_Position = gl_Position/gl_Position.w;
-    color = vec4(lights[0].direction, 1.0);
+    if (lights[0].typeLight != 0){
+        color = vec4(lights[0].direction, 1.0);
+    }else{
+        color = vec4(1.0, 0.0, 0.0, 1.0); //This works
+    }
     //color = vec4(lights[0].is, 1.0);
     //color = vec4(1.0, 0.0, 0.0, 1.0); //This works
 }

@@ -87,6 +87,7 @@ void Scene::setLightActual(shared_ptr<Light> l){
  */
 void Scene::lightsToGPU(shared_ptr<QGLShaderProgram> program){
 // TO DO: A implementar a la fase 1 de la practica 2
+
     for (int i = 0; i < lights.size() && 5; ++i) { // NO PUEDE DAR MAS ITERACIONES QUE LUCES TIENE PUESTAS
             lightsGPU[i].ia = program->uniformLocation(QString("lights[%1].ia").arg(i));
             lightsGPU[i].id = program->uniformLocation(QString("lights[%1].id").arg(i));
@@ -95,6 +96,7 @@ void Scene::lightsToGPU(shared_ptr<QGLShaderProgram> program){
             lightsGPU[i].position = program->uniformLocation(QString("lights[%1].position").arg(i));
             lightsGPU[i].direction = program->uniformLocation(QString("lights[%1].direction").arg(i));
             lightsGPU[i].angle = program->uniformLocation(QString("lights[%1].angle").arg(i));
+            lightsGPU[i].typeLight = program->uniformLocation(QString("lights[%1].typeLight").arg(i));
 
 
             glUniform3fv(lightsGPU[i].ia, 1, lights[i]->getIa());
@@ -104,6 +106,7 @@ void Scene::lightsToGPU(shared_ptr<QGLShaderProgram> program){
             glUniform4fv(lightsGPU[i].position, 1, lights[i]->getLightPosition());
             glUniform3fv(lightsGPU[i].direction, 1, lights[i]->getDirection());
             glUniform1f(lightsGPU[i].angle, lights[i]->getAngle());
+            glUniform1i(lightsGPU[i].typeLight, lights[i]->getTipusLight());
         }
 
 }
