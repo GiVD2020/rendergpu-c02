@@ -19,8 +19,8 @@ Segona pràctica de GiVD 2020-21
     - Material (Oriol)
     - Light
         - [X] Puntual (Oriol)
-        - [ ] Direccional
-        - [ ] Spotlight
+        - [X] Direccional (Oriol)
+        - [X] Spotlight (Oriol)
         - [X] Ambient Global (Oriol)
     - Shading
         - [ ] Phong
