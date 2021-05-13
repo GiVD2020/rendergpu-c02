@@ -31,6 +31,12 @@ class Light {
         LightType getTipusLight() const;
         void setTipusLight(const LightType &value);
 
+        vec3 getDirection() const;
+        void setDirection(const vec3 &value);
+
+        float getAngle() const;
+        void setAngle(const float &value);
+
     private:
         vec4 lightPosition;
         vec3 ambiental;
@@ -38,5 +44,7 @@ class Light {
         vec3 specular;
         vec3 coeficients;
         LightType typo;
+        vec3 direction;
+        float angle;
 };
 
