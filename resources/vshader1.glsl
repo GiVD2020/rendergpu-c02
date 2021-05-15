@@ -47,7 +47,7 @@ void main()
     vec4 H, L, N = vNormal;
     vec4 V;
     float epsilon = 0.01f, LN;
-    vec4 iluminacioLocal, difuseAndSpecular;
+    vec4 iluminacioLocal, difuseAndSpecular, iterColor;
 
     for (int i = 0; i < 1 ; i++) {
         iluminacioLocal = vec4(lights[i].ia, 1.0) * materials.ka;
@@ -69,7 +69,23 @@ void main()
         float NH = max(dot(N, H), 0.0f);
         difuseAndSpecular += vec4(lights[0].is, 1.0) * materials.ks * pow(NH, materials.shine);
 
+        /* ATENUACIO */
+        /*
+        vec3 posicionGL = vec3(gl_Position);
+        vec3 posicionLight = vec3(lights[i].position);
+        float d = distance(posicionGL, posicionLight);
+
+        difuseAndSpecular *= 1.0f / (lights[i].coeficients.x * pow(d, 2.0) + lights[i].coeficients.y * d + lights[i].coeficients.z);
+        iterColor = difuseAndSpecular;*/
+
+        iterColor = difuseAndSpecular;
+
+        //AMBIENTAL COLOR(local)
+        iterColor += vec4(lights[i].ia, 1.0) * materials.ka;
+        color = iterColor;
+
     }
-    color = difuseAndSpecular;
+
+    color += vec4(iAmbientGlobal, 1.0) * materials.ka;
 
 }
