@@ -12,6 +12,8 @@ Light::Light(LightType t) {
     this->specular = vec3(0.0, 0.0, 1.0);
     this->coeficients = vec3(1.0, 2.0, 8.0);
     this->typo = t;
+    this->direction = vec3(1.0, 0.0, 0.5);
+    this->angle = 30.40;
 }
 
 /**
@@ -130,3 +132,20 @@ void Light::setTipusLight(const LightType &value)
     // TO DO: A canviar a la fase 1 de la practica 2
     this->typo = value;
 }
+
+vec3 Light::getDirection() const{
+    return this->direction;
+}
+
+void Light::setDirection(const vec3 &value){
+    this->direction = value;
+}
+
+float Light::getAngle() const{
+    return this->angle;
+}
+
+void Light::setAngle(const float &value){
+    this->angle = value;
+}
+
