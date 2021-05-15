@@ -8,6 +8,7 @@ uniform mat4 projection;
 
 out vec4 color;
 
+/***       PAS 2      ***/
 struct MaterialComponents{
     vec4 ka;
     vec4 kd;
@@ -17,6 +18,7 @@ struct MaterialComponents{
 
 uniform MaterialComponents materials; //It'll be uniform
 
+/***       PAS 3      ***/
 struct LightComponents{
     vec3 ia;
     vec3 id;
@@ -32,6 +34,9 @@ uniform LightComponents lights[5];
 
 uniform vec3 iAmbientGlobal;
 
+/***       PAS 4      ***/
+uniform vec4 obs;
+
 void main()
 {
     gl_Position = projection*model_view*vPosition;
@@ -42,6 +47,6 @@ void main()
     }else{
         color = vec4(1.0, 1.0, 0.0, 1.0); //This works
     }*/
-    color = vNormal;
+    color = obs;
     //color = vec4(1.0, 0.0, 0.0, 1.0); //This works
 }
