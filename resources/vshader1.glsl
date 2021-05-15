@@ -37,16 +37,39 @@ uniform vec3 iAmbientGlobal;
 /***       PAS 4      ***/
 uniform vec4 obs;
 
+
 void main()
 {
     gl_Position = projection*model_view*vPosition;
     gl_Position = gl_Position/gl_Position.w;
-    /*
-    if (lights[0].typeLight != 2){
-        color = vec4(lights[0].direction, 1.0);
-    }else{
-        color = vec4(1.0, 1.0, 0.0, 1.0); //This works
-    }*/
-    color = obs;
-    //color = vec4(1.0, 0.0, 0.0, 1.0); //This works
+
+    /* GOURAUND SHADING  */
+    vec4 H, L, N = vNormal;
+    vec4 V;
+    float epsilon = 0.01f, LN;
+    vec4 iluminacioLocal, difuseAndSpecular;
+
+    for (int i = 0; i < 1 ; i++) {
+        iluminacioLocal = vec4(lights[i].ia, 1.0) * materials.ka;
+
+        /* DIFSUSE */
+        L = lights[0].position - gl_Position;
+        L = normalize(L);
+        float LN = max(dot(L,N), 0.0f);
+        difuseAndSpecular = vec4(lights[0].id, 1.0) * materials.kd * LN;
+
+        /* SPECULAR */
+        V = obs - gl_Position;
+        V = normalize(V);
+
+        H = (L + V) / (sqrt((L.x + V.x)*(L.x + V.x)) +
+                                 sqrt((L.y + V.y)*(L.y + V.y)) +
+                                 sqrt((L.z + V.z)*(L.z + V.z)));
+        H = normalize(H);
+        float NH = max(dot(N, H), 0.0f);
+        difuseAndSpecular += vec4(lights[0].is, 1.0) * materials.ks * pow(NH, materials.shine);
+
+    }
+    color = difuseAndSpecular;
+
 }

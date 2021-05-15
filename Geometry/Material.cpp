@@ -3,10 +3,10 @@
 
 Material::Material() {
     // This values are done in order to test that material goes to GPU
-    this->ambiental = vec4(1.0, 0.0, 0.0, 1.0);
-    this->diffuse = vec4(0.0, 1.0, 0.0, 1.0);
-    this->specular = vec4(0.0, 0.0, 1.0, 1.0);
-    this->shiness = 1.0;
+    this->ambiental = vec4(0.05, 0.0, 0.0, 1.0);
+    this->diffuse = vec4(0.5, 0.4, 0.4, 1.0);
+    this->specular = vec4(0.7, 0.04, 0.04, 1.0);
+    this->shiness = 0.078125;
 }
 
 /**
