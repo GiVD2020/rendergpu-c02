@@ -11,7 +11,7 @@ Scene::Scene() {
     capsaMinima.p = 2;
     lightAmbientGlobal = vec3(0.2, 0.2, 0.2);
 
-    auto li = make_shared<Light>(Puntual);
+    auto li = make_shared<Light>(Spot);
     lights.push_back(li);
 }
 
