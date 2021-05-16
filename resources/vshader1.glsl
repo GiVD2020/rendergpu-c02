@@ -53,7 +53,7 @@ void main()
 
         /* DIFUSE */
         L = normalize(lights[i].position - vPosition);
-        N = normalize(vNormal);
+        N = vNormal;
         float LN = max(dot(L,N), 0.0f);
         difuseAndSpecular = vec4(lights[i].id, 1.0) * materials.kd * LN;    //Solo difusa
 
