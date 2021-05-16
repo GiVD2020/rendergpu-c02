@@ -30,15 +30,14 @@ struct LightComponents{
 };
 
 uniform LightComponents lights[5];
+//uniform int lengthLuces;
 uniform vec3 iAmbientGlobal;
 
 /***       PAS 4      ***/
 uniform vec4 obs;
 
-
 void main()
 {
-
     /* PHONG SHADING  */
     vec4 H, L, N, V;
     vec4 difuseAndSpecular, ambiental;
@@ -46,29 +45,53 @@ void main()
     // TODO Tienes que saber el num. de lights de antemano, por ahora hardcoded
     for (int i = 0; i < 1 ; i++) {
 
-        /* DIFUSE */
-        L = normalize(lights[i].position - Position);
-        N = Normal;
-        float LN = max(dot(L,N), 0.0f);
-        difuseAndSpecular = vec4(lights[i].id, 1.0) * materials.kd * LN;    //Solo difusa
+        if (lights[i].typeLight == 0) {  //Puntual
 
-        /* SPECULAR */
-        V = normalize(obs - Position);
-        H = normalize((L + V)/ (sqrt((L.x + V.x)*(L.x + V.x)) +
-                                sqrt((L.y + V.y)*(L.y + V.y)) +
-                                sqrt((L.z + V.z)*(L.z + V.z))));
+            /* DIFUSE */
+            L = normalize(lights[i].position - Position);
+            N = Normal;
+            float LN = max(dot(L,N), 0.0f);
+            difuseAndSpecular = vec4(lights[i].id, 1.0) * materials.kd * LN;    //Solo difusa
 
-        float NH = max(dot(H, N), 0.0f);
-        difuseAndSpecular += vec4(lights[i].is, 1.0) * materials.ks * pow(NH, materials.shine); // Difusa y especular
+            /* SPECULAR */
+            V = normalize(obs - Position);
+            H = normalize((L + V)/ (sqrt((L.x + V.x)*(L.x + V.x)) +
+                                    sqrt((L.y + V.y)*(L.y + V.y)) +
+                                    sqrt((L.z + V.z)*(L.z + V.z))));
 
-        /* ATENUACIO */
-        //float d = distance(vec3(vPosition), vec3(lights[i].position));
-        //float atenuacion = (1.0f / (lights[i].coeficients.x * pow(d, 2.0) + lights[i].coeficients.y * d + lights[i].coeficients.z));
-        //difuseAndSpecular *= atenuacion;
+            float NH = max(dot(H, N), 0.0f);
+            difuseAndSpecular += vec4(lights[i].is, 1.0) * materials.ks * pow(NH, materials.shine); // Difusa y especular
 
-        //AMBIENTAL COLOR(local)
-        ambiental = vec4(lights[i].ia, 1.0) * materials.ka;
-        colorOut = difuseAndSpecular + ambiental;
+            /* ATENUACIO */
+            //float d = distance(vec3(Position), vec3(lights[i].position));
+            //float atenuacion = (1.0f / (lights[i].coeficients.x * pow(d, 2.0) + lights[i].coeficients.y * d + lights[i].coeficients.z));
+            //difuseAndSpecular *= atenuacion;
+
+            //AMBIENTAL COLOR(local)
+            ambiental = vec4(lights[i].ia, 1.0) * materials.ka;
+            colorOut = difuseAndSpecular + ambiental;
+
+        } else if (lights[i].typeLight == 1) {  //Direccional
+            /* DIFUSE */
+            L = normalize(vec4(-lights[i].direction, 1.0));
+            N = Normal;
+            float LN = max(dot(L,N), 0.0f);
+            difuseAndSpecular = vec4(lights[i].id, 1.0) * materials.kd * LN;    //Solo difusa
+
+            /* SPECULAR */
+            V = normalize(obs - Position);
+            H = normalize((L + V)/ (sqrt((L.x + V.x)*(L.x + V.x)) +
+                                    sqrt((L.y + V.y)*(L.y + V.y)) +
+                                    sqrt((L.z + V.z)*(L.z + V.z))));
+
+            float NH = max(dot(H, N), 0.0f);
+            difuseAndSpecular += vec4(lights[i].is, 1.0) * materials.ks * pow(NH, materials.shine); // Difusa y especular
+
+            //AMBIENTAL COLOR(local)
+            ambiental = vec4(lights[i].ia, 1.0) * materials.ka;
+            colorOut = difuseAndSpecular + ambiental;
+
+        }
 
     }
     vec4 ambientGlobal = vec4(iAmbientGlobal,1.0);
