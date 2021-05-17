@@ -165,6 +165,13 @@ void Object::initTexture()
     // TO DO: A implementar a la fase 1 de la practica 2
     // Cal inicialitzar la textura de l'objecte: veure l'exemple del CubGPUTextura
     qDebug() << "Initializing textures...";
+    // Carregar la textura
+    glActiveTexture(GL_TEXTURE0);
+    texture = make_shared<QOpenGLTexture>(QImage(this->texturePath));
+    texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
+    texture->setMagnificationFilter(QOpenGLTexture::Linear);
+
+    texture->bind(0);
 
  }
 

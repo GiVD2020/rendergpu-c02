@@ -8,5 +8,6 @@
         <file>resources/fshaderPhong.glsl</file>
         <file>resources/vshaderToon.glsl</file>
         <file>resources/fshaderToon.glsl</file>
+        <file>resources/textures/2k_earth_clouds.jpg</file>
     </qresource>
 </RCC>

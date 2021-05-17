@@ -10,7 +10,7 @@ using namespace Common;
 
 #include <QGLShaderProgram>
 #include <QOpenGLTexture>
-
+#include <QString>
 #include <QFile>
 #include <QRegularExpression>
 #include <QDebug>
@@ -53,6 +53,8 @@ protected:
     shared_ptr<QGLShaderProgram> program;
 
     shared_ptr<QOpenGLTexture> texture;
+
+    QString texturePath;
 
 public:
 

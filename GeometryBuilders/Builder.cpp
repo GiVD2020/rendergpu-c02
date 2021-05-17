@@ -11,6 +11,7 @@ void Builder::newObjFromFile()
 {
     QString fileName = QFileDialog::getOpenFileName();
     if (!fileName.isNull()) {
+            //Podriem fer un nou dialeg per fer set de la textura
             auto obj = make_shared<Object>(100000, fileName);
             scene->addObject(obj);
             scene->camera->actualitzaCamera(scene->capsaMinima);
