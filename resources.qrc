@@ -7,5 +7,6 @@
         <file>resources/configMappingData.txt</file>
         <file>resources/data0.txt</file>
         <file>resources/data10.txt</file>
+        <file>resources/models/f16.obj</file>
     </qresource>
 </RCC>

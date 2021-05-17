@@ -30,9 +30,9 @@ public:
 
     int getNumProps() { return setup->numProp; };
 
-    /*Object getObjectTypeProp(int i) {
-        return setup->props[i].first;
-    }*/
+    QString getObjectPath(int i) {
+        return setup->propPaths[i];
+    }
     ColorMapStatic::ColorMapType getObjectMaterial(int i) {
         return setup->propsColor[i];
     }

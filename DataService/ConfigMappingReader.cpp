@@ -128,6 +128,7 @@ void ConfigMappingReader::propFound(QStringList fields) {
 
     numProp++;
     propLimits.push_back(std::make_pair(fields[2].toDouble(), fields[3].toDouble()));
+    propPaths.push_back(fields[4]);
 
     ColorMapStatic::ColorMapType tipusColorMap;
 

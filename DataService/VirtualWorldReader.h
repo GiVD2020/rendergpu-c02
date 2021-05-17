@@ -28,7 +28,7 @@ private:
     shared_ptr<Scene> scene;
     shared_ptr<Mapping> mapping;
 
-    void brObjectFound(QStringList fields);
+    void brObjectFound(QString fields);
 
 };
 

@@ -1,4 +1,5 @@
 #include "Geometry/Object.h"
+#include "library/Common.h"
 
 
 /**
@@ -275,4 +276,14 @@ Capsa3D Object::calculCapsa3D()
 
 void Object::aplicaTG(shared_ptr<TG> tg){
 
+    //Per cada vertex el multipliquem per la matriu de translacio.
+    int i = 0;
+    for (vec4 v : vertexs) {
+        v = mvmult(tg->getTG(), v);
+        vertexs[i].x = v.x;
+        vertexs[i].y = v.y;
+        vertexs[i].z = v.z;
+        i+=1;
+    }
+    make();
 }

@@ -1,5 +1,8 @@
 #include "RealDataReader.h"
 #include "Geometry/Plane.h"
+#include "Geometry/TranslateTG.h"
+#include "Geometry/ScaleTG.h"
+
 
 RealDataReader::RealDataReader(shared_ptr<Scene> s)
 {
@@ -25,7 +28,6 @@ void RealDataReader::readFile(QString fileName, shared_ptr<Mapping> map) {
     file.close();
 }
 
-// TODO: Fase 1: Cal afegir més tipus d'objectes
 void RealDataReader::fileLineRead (QString lineReaded) {
 
     QStringList fields = lineReaded.split(",");
@@ -43,15 +45,30 @@ void RealDataReader::dataFound(QStringList fields) {
 
     if (fields.size() != (3 + n)) {
         std::cerr << "Wrong data format" << std::endl;
-        return;
+        //return;
     }
 
     for (int i=0; i<n; i++) {
 
         shared_ptr<Object> o;
-        double yPlanePos = mapping->getPlaneCenter();
-        yPlanePos = -yPlanePos;
 
+        vec3 puntBase = vec3(fields[1].toDouble(), 0, fields[2].toDouble());
+        vec3 mappedCoords = mapping->mapeigPunt(puntBase);
+        float mappedVal = mapping->mapeigValor(fields[3 + i].toDouble(), i);
+
+
+        QString objectPath = mapping->getObjectPath(i);
+
+        //Creem un objecte TranslateTG que conte la matriu de translacio.
+        shared_ptr<TranslateTG> transl = make_shared<TranslateTG>(mappedCoords);
+        shared_ptr<ScaleTG> scal = make_shared<ScaleTG>(mappedVal);
+
+        o = ObjectFactory::getInstance().createObject(objectPath, -1.0f);
+
+        o->aplicaTG(transl);
+        o->aplicaTG(scal);
+
+        scene->objects.push_back(o);
         /*
         if (type == ObjectFactory::CYLINDER) {
            o = ObjectFactory::getInstance().createObject(mapping->mapeigPunt(puntBase),
@@ -82,9 +99,7 @@ void RealDataReader::dataFound(QStringList fields) {
         o->setMaterial(mapping->mapeigMaterial(i, mapping->getColorMapProp(i), fields[3 + i].toDouble()));
     
         // Afegir objecte a l'escena
-        scene->objects.push_back(o);*/
-        std::cerr << "RealDataReader::dataFound NOT IMPLEMENTED ERROR "<< std::endl;
-        return;
+        */
     }
 }
 

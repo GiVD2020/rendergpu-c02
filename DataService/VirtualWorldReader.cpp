@@ -27,22 +27,22 @@ void VirtualWorldReader::readFile(QString fileName, shared_ptr<Mapping> map) {
     file.close();
 }
 
-// TODO: Fase 1: Cal afegir més tipus d'objectes
 void VirtualWorldReader::fileLineRead (QString lineReaded) {
 
     QStringList fields = lineReaded.split(",");
-    brObjectFound(fields);
+    for (int i=0; i < fields.length(); i++)
+        brObjectFound(fields[i]);
 
 }
 
-void VirtualWorldReader::brObjectFound(QStringList fields) {
+void VirtualWorldReader::brObjectFound(QString fields) {
 
     shared_ptr<Object> o;
 
     vector<vec3> points;
     vector<double> properties;
 
-    o = ObjectFactory::getInstance().createObject(fields[0], -1.0f);
+    o = ObjectFactory::getInstance().createObject(fields, -1.0f);
     /*
     if(fields.length() == 5){
         auto mat = make_shared<Lambertian>(vec3(fields[2].toDouble(),fields[3].toDouble(),fields[4].toDouble()));

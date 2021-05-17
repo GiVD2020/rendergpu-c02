@@ -71,6 +71,7 @@ public:
     // Fase 4: Caldrà tenir aqui la textura del pla
 
     vector<pair<double, double>> propLimits;
+    vector<QString> propPaths;
     vector<ColorMapStatic::ColorMapType> propsColor;
 };
 
