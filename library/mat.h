@@ -584,7 +584,7 @@ mat4 transpose( const mat4& A ) {
 inline
 vec4 mvmult( const mat4& a, const vec4& b )
 {
-    Error( "replace with vector matrix multiplcation operator" );
+    //Error( "replace with vector matrix multiplcation operator" );
 
     vec4 c;
     int i, j;

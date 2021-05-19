@@ -50,23 +50,22 @@ void RealDataReader::dataFound(QStringList fields) {
 
     for (int i=0; i<n; i++) {
 
+        //Object creation
         shared_ptr<Object> o;
-
-        vec3 puntBase = vec3(fields[1].toDouble(), 0, fields[2].toDouble());
-        vec3 mappedCoords = mapping->mapeigPunt(puntBase);
-        float mappedVal = mapping->mapeigValor(fields[3 + i].toDouble(), i);
-
-
         QString objectPath = mapping->getObjectPath(i);
-
-        //Creem un objecte TranslateTG que conte la matriu de translacio.
-        shared_ptr<TranslateTG> transl = make_shared<TranslateTG>(mappedCoords);
-        shared_ptr<ScaleTG> scal = make_shared<ScaleTG>(mappedVal);
-
         o = ObjectFactory::getInstance().createObject(objectPath, -1.0f);
 
-        o->aplicaTG(transl);
+        float mappedVal = mapping->mapeigValor(fields[3 + i].toDouble(), i);
+        shared_ptr<ScaleTG> scal = make_shared<ScaleTG>(mappedVal);
         o->aplicaTG(scal);
+
+        Capsa3D objectBox = o->calculCapsa3D();
+
+        //Apply translation
+        vec3 puntBase = vec3(fields[1].toDouble(), objectBox.h/2, fields[2].toDouble());
+        vec3 mappedCoords = mapping->mapeigPunt(puntBase);
+        shared_ptr<TranslateTG> transl = make_shared<TranslateTG>(mappedCoords);
+        o->aplicaTG(transl);
 
         scene->objects.push_back(o);
         /*

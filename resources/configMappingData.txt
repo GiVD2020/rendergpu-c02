@@ -2,4 +2,4 @@ dataType,REALDATA
 limitsMonVirtual, -1, 1, -1, 1, -1, 1
 limitsMonReal, 2.0259, 2.2955, 41.3013, 41.4903
 base,plane, 0.0, 1.0, 0.0, -0.5,:/resources/map.png
-prop, 1, 0, 15000,://resources/models/f16.obj,COLOR_MAP_TYPE_INFERNO
+prop, 1, 0, 50000,://resources/models/suzanne.obj,COLOR_MAP_TYPE_INFERNO

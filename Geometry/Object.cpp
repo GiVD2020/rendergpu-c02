@@ -251,6 +251,10 @@ Capsa3D Object::calculCapsa3D()
     pmin.x = points[0].x;
     pmin.y = points[0].y;
     pmin.z = points[0].z;
+    std::cout << points[0].x << endl;
+    std::cout << points[0].y << endl;
+    std::cout << points[0].z << endl;
+
     pmax = pmin;
     for(i=1; i<Index; i++) {
         if(points[i].x <pmin[0])

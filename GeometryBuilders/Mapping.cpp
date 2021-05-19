@@ -16,10 +16,13 @@ vec3 Mapping::mapeigPunt(vec3 puntMonReal) {
       puntMonVirtual.z = (((puntMonReal.z - this->setup->Rzmin) / (this->setup->Rzmax - this->setup->Rzmin)) *
                          (this->setup->Vzmax - this->setup->Vzmin)) + this->setup->Vzmin;
       puntMonVirtual.z = -puntMonVirtual.z;
-  
+      /*
       if (this->setup->Rymax != this->setup->Rymin)
          puntMonVirtual.y = (((puntMonReal.y - this->setup->Rymin) / (this->setup->Rymax - this->setup->Rymin)) *
-                            (this->setup->Vymax - this->setup->Vymin)) + this->setup->Vymin;
+                            (this->setup->Vymax - this->setup->Vymin)) + this->setup->Vymin;*/
+
+      std::cout << "a" << endl;
+      std::cout << puntMonVirtual.y << endl;
 
       return puntMonVirtual;
 }
