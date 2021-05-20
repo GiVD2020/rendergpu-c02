@@ -35,7 +35,7 @@ void GLWidget::setScene(shared_ptr<Scene> sc) {
  */
 void GLWidget::initializeGL() {
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
     glEnable(GL_RGBA);
     glEnable(GL_DOUBLE);
 

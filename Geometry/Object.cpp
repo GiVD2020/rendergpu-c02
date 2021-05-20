@@ -1,4 +1,5 @@
 #include "Geometry/Object.h"
+#include "library/Common.h"
 
 
 /**
@@ -262,6 +263,10 @@ Capsa3D Object::calculCapsa3D()
     pmin.x = points[0].x;
     pmin.y = points[0].y;
     pmin.z = points[0].z;
+    std::cout << points[0].x << endl;
+    std::cout << points[0].y << endl;
+    std::cout << points[0].z << endl;
+
     pmax = pmin;
     for(i=1; i<Index; i++) {
         if(points[i].x <pmin[0])
@@ -287,4 +292,14 @@ Capsa3D Object::calculCapsa3D()
 
 void Object::aplicaTG(shared_ptr<TG> tg){
 
+    //Per cada vertex el multipliquem per la matriu de translacio.
+    int i = 0;
+    for (vec4 v : vertexs) {
+        v = mvmult(tg->getTG(), v);
+        vertexs[i].x = v.x;
+        vertexs[i].y = v.y;
+        vertexs[i].z = v.z;
+        i+=1;
+    }
+    make();
 }

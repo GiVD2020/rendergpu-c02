@@ -37,6 +37,12 @@ class Scene {
 
 public:
 
+    typedef enum {
+        VIRTUALWORLD,
+        REALDATA,
+        TEMPORALVW,
+        TEMPORALDATA
+    } DATA_TYPES;
     lightGPU lightsGPU[5]; //If you change num remember vertexShader
     GLuint lightAmbientGlobalToGPU;
 

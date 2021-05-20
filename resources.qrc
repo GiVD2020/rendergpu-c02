@@ -2,6 +2,17 @@
     <qresource prefix="/">
         <file>resources/fshader1.glsl</file>
         <file>resources/vshader1.glsl</file>
+
+        <file>resources/configMapping.txt</file>
+        <file>resources/models/sphere1.obj</file>
+        <file>resources/configMappingData.txt</file>
+        <file>resources/data0.txt</file>
+        <file>resources/data10.txt</file>
+        <file>resources/models/f16.obj</file>
+        <file>resources/models/sphere0.obj</file>
+        <file>resources/models/capsule.obj</file>
+        <file>resources/models/suzanne.obj</file>
+        <file>resources/models/common-cockle.obj</file>
         <file>resources/vshaderGouraud.glsl</file>
         <file>resources/fshaderGouraud.glsl</file>
         <file>resources/vshaderPhong.glsl</file>
