@@ -22,5 +22,11 @@
         <file>resources/fshaderPhongText.glsl</file>
         <file>resources/vshaderPhongText.glsl</file>
         <file>resources/textures/bricks.png</file>
+        <file>resources/textures/2k_sun.jpg</file>
+        <file>resources/textures/MonkeyTex.png</file>
+        <file>resources/models/MonkeyTex.obj</file>
+        <file>resources/models/cruiser.obj</file>
+        <file>resources/textures/cruiser.bmp</file>
+        <file>resources/textures/F16s.bmp</file>
     </qresource>
 </RCC>

@@ -65,7 +65,6 @@ void GLWidget::paintGL() {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     scene->camera->toGPU(program);
     //scene->draw();
-
     scene->drawTexture();
 }
 
@@ -91,8 +90,9 @@ void GLWidget::initShadersGPU(){
     initShader("://resources/vshaderGouraud.glsl", "://resources/fshaderGouraud.glsl");
     initShader("://resources/vshaderPhong.glsl", "://resources/fshaderPhong.glsl");
     initShader("://resources/vshaderToon.glsl", "://resources/fshaderToon.glsl");
-    initShader("://resources/vshaderPhongText.glsl", "://resources/fshaderPhongText.glsl");
     initShader("://resources/vshader1.glsl", "://resources/fshader1.glsl");
+    initShader("://resources/vshaderPhongText.glsl", "://resources/fshaderPhongText.glsl");
+
 
 }
 
@@ -120,7 +120,6 @@ void GLWidget::initShader(const char* vShaderFile, const char* fShaderFile){
     program->addShader(fshader);
     program->link();
     program->bind();
-    setTextureFile(QString("/home/angel/rendergpu-c02/resources/textures/bricks.png"));
     //scene->lightsToGPU(program);
 
     programList.push_back(program);
