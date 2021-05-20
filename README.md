@@ -16,12 +16,12 @@ Segona pràctica de GiVD 2020-21
         - [ ] Objectes
         - [ ] Escenes virtuals
         - [ ] Escenes de dades Reals 
-    - Material
+    - Material (Oriol)
     - Light
-        - [ ] Puntual
-        - [ ] Direccional
-        - [ ] Spotlight
-        - [ ] Ambient Global
+        - [X] Puntual (Oriol)
+        - [X] Direccional (Oriol)
+        - [X] Spotlight (Oriol)
+        - [X] Ambient Global (Oriol)
     - Shading
         - [ ] Phong
         - [ ] Gouraud

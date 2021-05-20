@@ -6,7 +6,14 @@
  */
 Light::Light(LightType t) {
     // TO DO: A canviar a la fase 1 de la practica 2
-
+    this->lightPosition = vec4(10.0, 10.0, 20.0, 1.0);
+    this->ambiental = vec3(0.2, 0.2, 0.2);
+    this->diffuse = vec3(0.8, 0.8, 0.8);
+    this->specular = vec3(1.0, 1.0, 1.0);
+    this->coeficients = vec3(0.0, 0.2, 0.8);
+    this->typo = t;
+    this->direction = vec3(1.0, 0.0, 0.5);
+    this->angle = 30.40;
 }
 
 /**
@@ -15,7 +22,7 @@ Light::Light(LightType t) {
  */
 vec3 Light::getId() {
     // TO DO: A canviar a la fase 1 de la practica 2
-   return(vec3(1.0, 1.0, 1.0));
+   return diffuse;
 }
 
 /**
@@ -24,7 +31,7 @@ vec3 Light::getId() {
  */
 void Light::setId(vec3 i) {
     // TO DO: A canviar a la fase 1 de la practica 2
-
+    this->diffuse = i;
 }
 
 /**
@@ -32,7 +39,7 @@ void Light::setId(vec3 i) {
  */
 vec4 Light::getLightPosition() {
     // TO DO: A canviar a la fase 1 de la practica 2
-    return(vec4(0.0, 0.0, 0.0, 0.0));
+    return lightPosition;
 }
 
 /**
@@ -41,6 +48,7 @@ vec4 Light::getLightPosition() {
  */
 void Light::setLightPosition(vec4 v) {
     // TO DO: A canviar a la fase 1 de la practica 2
+    this->lightPosition = v;
 }
 
 
@@ -51,7 +59,7 @@ void Light::setLightPosition(vec4 v) {
 vec3 Light::getIa() const
 {
     // TO DO: A canviar a la fase 1 de la practica 2
-       return(vec3(1.0, 1.0, 1.0));
+       return this->ambiental;
 }
 
 /**
@@ -61,7 +69,7 @@ vec3 Light::getIa() const
 void Light::setIa(const vec3 &value)
 {
     // TO DO: A canviar a la fase 1 de la practica 2
-
+    this->ambiental = value;
 }
 
 /**
@@ -71,7 +79,7 @@ void Light::setIa(const vec3 &value)
 vec3 Light::getIs() const
 {
     // TO DO: A canviar a la fase 1 de la practica 2
-       return(vec3(1.0, 1.0, 1.0));
+       return this->specular;
 }
 
 /**
@@ -81,6 +89,7 @@ vec3 Light::getIs() const
 void Light::setIs(const vec3 &value)
 {
     // TO DO: A canviar a la fase 1 de la practica 2
+    this->specular = value;
 }
 
 /**
@@ -90,7 +99,7 @@ void Light::setIs(const vec3 &value)
 vec3 Light::getCoeficients() const
 {
     // TO DO: A canviar a la fase 1 de la practica 2
-       return(vec3(1.0, 1.0, 1.0));
+       return this->coeficients;
 }
 
 /**
@@ -100,6 +109,7 @@ vec3 Light::getCoeficients() const
 void Light::setCoeficients(const vec3 &value)
 {
     // TO DO: A canviar a la fase 1 de la practica 2
+    this->coeficients = value;
 }
 
 
@@ -110,7 +120,7 @@ void Light::setCoeficients(const vec3 &value)
 LightType Light::getTipusLight() const
 {
     // TO DO: A canviar a la fase 1 de la practica 2
-    return Puntual;
+    return typo;
 }
 
 /**
@@ -120,4 +130,22 @@ LightType Light::getTipusLight() const
 void Light::setTipusLight(const LightType &value)
 {
     // TO DO: A canviar a la fase 1 de la practica 2
+    this->typo = value;
 }
+
+vec3 Light::getDirection() const{
+    return this->direction;
+}
+
+void Light::setDirection(const vec3 &value){
+    this->direction = value;
+}
+
+float Light::getAngle() const{
+    return this->angle;
+}
+
+void Light::setAngle(const float &value){
+    this->angle = value;
+}
+

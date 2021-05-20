@@ -45,6 +45,10 @@ void GLWidget::initializeGL() {
     auto l  = make_shared<Light>(Puntual);
     scene->addLight(l);
 
+    // Sending lights to GPU
+    scene->lightsToGPU(program);
+    scene->setAmbientToGPU(program);
+
     scene->camera->init(this->size().width(), this->size().height(), scene->capsaMinima);
     emit ObsCameraChanged(scene->camera);
     emit FrustumCameraChanged(scene->camera);
@@ -82,6 +86,9 @@ void GLWidget::resizeGL(int width, int height) {
  * @brief GLWidget::initShadersGPU
  */
 void GLWidget::initShadersGPU(){
+    initShader("://resources/vshaderGouraud.glsl", "://resources/fshaderGouraud.glsl");
+    initShader("://resources/vshaderPhong.glsl", "://resources/fshaderPhong.glsl");
+    initShader("://resources/vshaderToon.glsl", "://resources/fshaderToon.glsl");
     initShader("://resources/vshader1.glsl", "://resources/fshader1.glsl");
 }
 
@@ -109,6 +116,9 @@ void GLWidget::initShader(const char* vShaderFile, const char* fShaderFile){
     program->addShader(fshader);
     program->link();
     program->bind();
+    //scene->lightsToGPU(program);
+
+    programList.push_back(program);
 }
 
 /** Gestio de les animacions i la gravació d'imatges ***/
@@ -181,17 +191,32 @@ void GLWidget::saveAnimation() {
 
 void GLWidget::activaToonShader() {
     //A implementar a la fase 1 de la practica 2
+    program = programList.at(2);
+    program->link();
+    program->bind();
+    scene->toGPU(program);
+    updateGL();
     qDebug()<<"Estic a Toon";
 }
 
 void GLWidget::activaPhongShader() {
     //Opcional: A implementar a la fase 1 de la practica 2
+    program = programList.at(1);
+    program->link();
+    program->bind();
+    scene->toGPU(program);
+    updateGL();
     qDebug()<<"Estic a Phong";
 
 }
 
 void GLWidget::activaGouraudShader() {
     //A implementar a la fase 1 de la practica 2
+    program = programList.at(0);
+    program->link();
+    program->bind();
+    scene->toGPU(program);
+    updateGL();
     qDebug()<<"Estic a Gouraud";
 
 }
@@ -199,6 +224,7 @@ void GLWidget::activaGouraudShader() {
 void GLWidget::activaPhongTex() {
     //A implementar a la fase 1 de la practica 2
     qDebug()<<"Estic a Phong Tex";
+
 }
 
 void GLWidget::activaBackground() {

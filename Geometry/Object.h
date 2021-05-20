@@ -10,7 +10,7 @@ using namespace Common;
 
 #include <QGLShaderProgram>
 #include <QOpenGLTexture>
-
+#include <QString>
 #include <QFile>
 #include <QRegularExpression>
 #include <QDebug>
@@ -20,6 +20,7 @@ using namespace Common;
 #include <Geometry/TG.h>
 #include <Geometry/Animation.h>
 #include <Geometry/Cara.h>
+#include <Geometry/Material.h>
 
 typedef vec4  point4;
 
@@ -45,11 +46,15 @@ protected:
     // Els colors s'usen en la primera execució però després son prescindibles
     point4 *colors;
 
+    Material *material;
+
     int Index; // index de control del numero de vertexs a passar a la GPU
 
     shared_ptr<QGLShaderProgram> program;
 
     shared_ptr<QOpenGLTexture> texture;
+
+    QString texturePath;
 
 public:
 
