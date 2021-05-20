@@ -65,6 +65,7 @@ public:
     void setCamera(shared_ptr<Camera> c);
 
     void toGPU(shared_ptr<QGLShaderProgram> p);
+    void toGPUTexture(shared_ptr<QGLShaderProgram> p);
     void draw();
     void drawTexture();
 

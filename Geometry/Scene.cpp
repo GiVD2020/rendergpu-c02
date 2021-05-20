@@ -43,6 +43,16 @@ void Scene::toGPU(shared_ptr<QGLShaderProgram> p) {
     qDebug() << "Metiendo luces en el GPU";
     lightsToGPU(p);
 }
+/**
+ * @brief Scene::toGPU
+ */
+void Scene::toGPUTexture(shared_ptr<QGLShaderProgram> p) {
+    for(unsigned int i=0; i < objects.size(); i++){
+        objects.at(i)->toGPUTexture(p);
+    }
+    qDebug() << "Metiendo luces en el GPU";
+    lightsToGPU(p);
+}
 
 /**
  * @brief Scene::draw

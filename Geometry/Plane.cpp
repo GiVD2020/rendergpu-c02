@@ -2,7 +2,7 @@
 #include "library/Common.h"
 Plane::Plane(vector<vec3> planeLimits):Object(100){
     //plane = make_shared<Object>(100);
-    vec3 normal = -cross(planeLimits.at(0)-planeLimits.at(1),planeLimits.at(0)-planeLimits.at(2));
+    vec3 normal = normalize(cross(planeLimits.at(0)-planeLimits.at(1),planeLimits.at(0)-planeLimits.at(2)));
     for(vec3 point: planeLimits){
         vertexs.push_back(point4(point.x,point.y,point.z,1.0f));
         //arreglar normales

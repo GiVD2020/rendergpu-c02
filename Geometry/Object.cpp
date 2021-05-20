@@ -12,6 +12,7 @@ Object::Object(int npoints, QObject *parent) : QObject(parent){
     points = new point4[numPoints];
     normals= new point4[numPoints];
     colors = new point4[numPoints];
+    textures = new vec2[numPoints];
  }
 
 /**
@@ -23,6 +24,7 @@ Object::Object(int npoints, QString n) : numPoints(npoints){
     points = new point4[numPoints];
     normals= new point4[numPoints];
     colors = new point4[numPoints];
+    textures = new vec2[numPoints];
 
     parseObjFile(n);
     make();
@@ -36,6 +38,7 @@ Object::~Object(){
     delete points;
     delete normals;
     delete colors;
+    delete textures;
 }
 
 /**
@@ -122,6 +125,7 @@ void Object::make(){
             colors[Index] = vec4(base_colors[j%4], 1.0);
             //normals[Index] = (normalsVertexs[cares[i].idxNormals[j]] + 1.0)/2.0;
             normals[Index] = normalsVertexs[cares[i].idxNormals[j]];
+            textures[Index] = textVertexs[cares[i].idxTextures[j]];
             Index++;
         }
     }
@@ -135,7 +139,77 @@ void Object::make(){
  * @param pr
  */
 void Object::toGPUTexture(shared_ptr<QGLShaderProgram> pr) {
+    qDebug() << "Obj to GPU with textures.....";
     program = pr;
+    // S'activa la textura i es passa a la GPU
+    texture->bind(0);
+    program->setUniformValue("texMap", 0);
+
+    // Creació d'un vertex array object
+    glGenVertexArrays( 1, &vao );
+    glBindVertexArray( vao );
+
+    // Creacio i inicialitzacio d'un vertex buffer object (VBO)
+    glGenBuffers( 1, &buffer );
+
+    // Activació a GL del Vertex Buffer Object
+    glBindBuffer( GL_ARRAY_BUFFER, buffer );
+
+    // Transferència dels punts, colors i coordenades de textura al vertex buffer object
+    glBufferData( GL_ARRAY_BUFFER, sizeof(points) + sizeof(colors)+sizeof(textVertexs),
+                  NULL, GL_STATIC_DRAW );
+    glBufferSubData( GL_ARRAY_BUFFER, 0, sizeof(points), points );
+    glBufferSubData( GL_ARRAY_BUFFER, sizeof(points), sizeof(normals), normals );
+    glBufferSubData( GL_ARRAY_BUFFER, sizeof(points) +sizeof(normals), sizeof(textures), textures );
+
+
+    // set up vertex arrays
+
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0,  0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0,  (void*)(sizeof(points)));
+    glEnableVertexAttribArray(1);
+
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0,  (void*)(sizeof(points)+sizeof(colors)));
+    glEnableVertexAttribArray(2);
+
+
+    glEnable( GL_DEPTH_TEST );
+    glEnable(GL_TEXTURE_2D);
+    // Temporary lines to test that material toGPU works correctly
+    material = new Material();
+    material->toGPU(pr);
+
+    /*
+    // Creació d'un vertex array object
+
+    glGenVertexArrays( 1, &vao );
+
+    // Creacio i inicialitzacio d'un vertex buffer object (VBO)
+    glGenBuffers( 1, &buffer );
+
+    // Aqui s'ha de fer el pas de dades a la GPU per si hi ha més d'un objecte
+    // Activació a GL del Vertex Buffer Object
+    glBindBuffer( GL_ARRAY_BUFFER, buffer );
+
+    // TO  DO: A modificar a la fase 1 de la practica 2
+    // Cal passar les normals a la GPU
+
+    glBufferData( GL_ARRAY_BUFFER, sizeof(point4)*Index + sizeof(point4)*Index, NULL, GL_STATIC_DRAW );
+    glBufferSubData( GL_ARRAY_BUFFER, 0, sizeof(point4)*Index, points );
+    glBufferSubData( GL_ARRAY_BUFFER, sizeof(point4)*Index, sizeof(point4)*Index, normals );
+
+    // set up vertex arrays
+    glBindVertexArray( vao );
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0,  0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0,  (void*)(sizeof(point4)*Index));
+    glEnableVertexAttribArray(1);
+    // Temporary lines to test that material toGPU works correctly
+    material = new Material();
+    material->toGPU(pr);*/
 
 // TO DO: Cal implementar en la fase 1 de la practica 2
 // S'ha d'activar la textura i es passa a la GPU
@@ -151,11 +225,15 @@ void Object::drawTexture(){
 
     // TO DO: Cal implementar en la fase 1 de la practica 2
     // S'ha d'activar la textura i es passa a la GPU
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glDrawArrays( GL_TRIANGLES, 0, Index );
 
 }
 
 void Object::setTexture(shared_ptr<QOpenGLTexture> t){
    texture = t;
+   initTexture();
+
 }
 
 /**
@@ -168,7 +246,6 @@ void Object::initTexture()
     qDebug() << "Initializing textures...";
     // Carregar la textura
     glActiveTexture(GL_TEXTURE0);
-    texture = make_shared<QOpenGLTexture>(QImage(this->texturePath));
     texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
     texture->setMagnificationFilter(QOpenGLTexture::Linear);
 

@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>resources/fshader1.glsl</file>
         <file>resources/vshader1.glsl</file>
-
         <file>resources/configMapping.txt</file>
         <file>resources/models/sphere1.obj</file>
         <file>resources/configMappingData.txt</file>
@@ -20,5 +19,8 @@
         <file>resources/vshaderToon.glsl</file>
         <file>resources/fshaderToon.glsl</file>
         <file>resources/textures/2k_earth_clouds.jpg</file>
+        <file>resources/fshaderPhongText.glsl</file>
+        <file>resources/vshaderPhongText.glsl</file>
+        <file>resources/textures/bricks.png</file>
     </qresource>
 </RCC>
