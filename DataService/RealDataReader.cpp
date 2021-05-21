@@ -67,6 +67,9 @@ void RealDataReader::dataFound(QStringList fields) {
         shared_ptr<TranslateTG> transl = make_shared<TranslateTG>(mappedCoords);
         o->aplicaTG(transl);
 
+        QString objectTexPath = mapping->getObjectTexPath(i);
+        o->setTexture(make_shared<QOpenGLTexture>(QImage(objectTexPath).mirrored()));
+
         scene->objects.push_back(o);
         /*
         if (type == ObjectFactory::CYLINDER) {

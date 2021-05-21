@@ -30,19 +30,23 @@ void VirtualWorldReader::readFile(QString fileName, shared_ptr<Mapping> map) {
 void VirtualWorldReader::fileLineRead (QString lineReaded) {
 
     QStringList fields = lineReaded.split(",");
-    for (int i=0; i < fields.length(); i++)
-        brObjectFound(fields[i]);
+    brObjectFound(fields);
 
 }
 
-void VirtualWorldReader::brObjectFound(QString fields) {
+void VirtualWorldReader::brObjectFound(QStringList fields) {
 
     shared_ptr<Object> o;
 
     vector<vec3> points;
     vector<double> properties;
+    QString textPath = "";
+    textPath = fields[1];
+    o = ObjectFactory::getInstance().createObject(fields[0], -1.0f);
 
-    o = ObjectFactory::getInstance().createObject(fields, -1.0f);
+    o->setTexture(make_shared<QOpenGLTexture>(QImage(textPath).mirrored()));
+    scene->objects.push_back(o);
+
     /*
     if(fields.length() == 5){
         auto mat = make_shared<Lambertian>(vec3(fields[2].toDouble(),fields[3].toDouble(),fields[4].toDouble()));
@@ -54,9 +58,6 @@ void VirtualWorldReader::brObjectFound(QString fields) {
 
         o->setMaterial(mat);
     }*/
-
-    scene->objects.push_back(o);
-
 
 }
 

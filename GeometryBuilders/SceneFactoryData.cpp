@@ -10,7 +10,7 @@ SceneFactoryData::SceneFactoryData(shared_ptr<ConfigMappingReader> mr):SceneFact
     this->xMin = mr->Vxmin;
     this->zMax = mr->Vzmax;
     this->zMin = mr->Vzmin;
-    //this->texturePath = mr->texturePath;
+    this->texturePath = mr->texturePath;
 }
 
 
@@ -20,28 +20,14 @@ shared_ptr<Scene> SceneFactoryData::createScene(QString filename) {
     auto rdr = make_shared<RealDataReader>(scene);
     rdr->readFile(filename, map);
 
-    /*
-    if (groundType == ObjectFactory::OBJECT_TYPES::SPHERE)
-        scene->terra = make_shared<Sphere>(this->normalPlaBase, this->dPlaBase, -1.0f);
-
-    else if (groundType == ObjectFactory::OBJECT_TYPES::PLANE)
-        scene->terra = make_shared<FittedPlane>(this->normalPlaBase, this->dPlaBase, -1.0f,
-                                                this->xMax, this->xMin, this->zMax, this->zMin);
-
-    scene->terra->setMaterial(make_shared<MaterialTextura>(this->texturePath));
-    //auto mat = make_shared<Lambertian>(vec3(0.7, 0.4, 0.4));
-    //scene->terra->setMaterial(mat);
-
-    scene->objects.push_back(scene->terra);*/
     vector<vec3> vec;
     vec.push_back(vec3(xMin,0,zMax));
     vec.push_back(vec3(xMax,0,zMax));
     vec.push_back(vec3(xMin,0,zMin));
     vec.push_back(vec3(xMax,0,zMin));
 
-
-    shared_ptr<Object> o;
-    o  = ObjectFactory::getInstance().createPlane(vec);
+    shared_ptr<Object> o  = ObjectFactory::getInstance().createPlane(vec);
+    o->setTexture(make_shared<QOpenGLTexture>(QImage(this->texturePath).mirrored()));
     scene->objects.push_back(o);
 
     return scene;

@@ -90,8 +90,8 @@ void GLWidget::initShadersGPU(){
     initShader("://resources/vshaderGouraud.glsl", "://resources/fshaderGouraud.glsl");
     initShader("://resources/vshaderPhong.glsl", "://resources/fshaderPhong.glsl");
     initShader("://resources/vshaderToon.glsl", "://resources/fshaderToon.glsl");
-    initShader("://resources/vshader1.glsl", "://resources/fshader1.glsl");
     initShader("://resources/vshaderPhongText.glsl", "://resources/fshaderPhongText.glsl");
+    initShader("://resources/vshader1.glsl", "://resources/fshader1.glsl");
 
 
 }

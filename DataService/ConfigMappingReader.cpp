@@ -121,7 +121,7 @@ void ConfigMappingReader::baseFound(QStringList fields) {
 
 void ConfigMappingReader::propFound(QStringList fields) {
     //prop numProp vmin vmax tipusGizmo
-    if (fields.size() != 6) {
+    if (fields.size() != 7) {
         std::cerr << "Wrong propietat format config mapping" << std::endl;
         return;
     }
@@ -129,6 +129,7 @@ void ConfigMappingReader::propFound(QStringList fields) {
     numProp++;
     propLimits.push_back(std::make_pair(fields[2].toDouble(), fields[3].toDouble()));
     propPaths.push_back(fields[4]);
+    propTexPath.push_back(fields[6]);
 
     ColorMapStatic::ColorMapType tipusColorMap;
 

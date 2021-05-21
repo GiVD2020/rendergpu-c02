@@ -33,6 +33,9 @@ public:
     QString getObjectPath(int i) {
         return setup->propPaths[i];
     }
+    QString getObjectTexPath(int i) {
+        return setup->propTexPath[i];
+    }
     ColorMapStatic::ColorMapType getObjectMaterial(int i) {
         return setup->propsColor[i];
     }

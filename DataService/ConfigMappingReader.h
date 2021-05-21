@@ -72,6 +72,7 @@ public:
 
     vector<pair<double, double>> propLimits;
     vector<QString> propPaths;
+    vector<QString> propTexPath;
     vector<ColorMapStatic::ColorMapType> propsColor;
 };
 

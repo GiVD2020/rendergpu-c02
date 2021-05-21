@@ -48,9 +48,8 @@ Object::~Object(){
 void Object::toGPU(shared_ptr<QGLShaderProgram> pr) {
     // TO  DO: A modificar a la fase 1 de la practica 2
 
-    //qDebug() << "Obj to GPU.....";
-    this->toGPUTexture(pr);
-    /*program = pr;
+    qDebug() << "Obj to GPU.....";
+    program = pr;
     // Creació d'un vertex array object
 
     glGenVertexArrays( 1, &vao );
@@ -78,7 +77,7 @@ void Object::toGPU(shared_ptr<QGLShaderProgram> pr) {
     glEnableVertexAttribArray(1);
     // Temporary lines to test that material toGPU works correctly
     material = new Material();
-    material->toGPU(pr);*/
+    material->toGPU(pr);
 }
 
 
@@ -127,11 +126,12 @@ void Object::make(){
             colors[Index] = vec4(base_colors[j%4], 1.0);
             //normals[Index] = (normalsVertexs[cares[i].idxNormals[j]] + 1.0)/2.0;
             normals[Index] = normalsVertexs[cares[i].idxNormals[j]];
-            textures[Index] = textVertexs[cares[i].idxTextures[j]];
+            if (textVertexs.size() > 0)
+                textures[Index] = textVertexs[cares[i].idxTextures[j]];
             Index++;
         }
     }
-    initTexture();
+
 }
 
 
@@ -184,41 +184,10 @@ void Object::toGPUTexture(shared_ptr<QGLShaderProgram> pr) {
     material = new Material();
     material->toGPU(pr);
 
-    /*
-    // Creació d'un vertex array object
-
-    glGenVertexArrays( 1, &vao );
-
-    // Creacio i inicialitzacio d'un vertex buffer object (VBO)
-    glGenBuffers( 1, &buffer );
-
-    // Aqui s'ha de fer el pas de dades a la GPU per si hi ha més d'un objecte
-    // Activació a GL del Vertex Buffer Object
-    glBindBuffer( GL_ARRAY_BUFFER, buffer );
-
-    // TO  DO: A modificar a la fase 1 de la practica 2
-    // Cal passar les normals a la GPU
-
-    glBufferData( GL_ARRAY_BUFFER, sizeof(point4)*Index + sizeof(point4)*Index, NULL, GL_STATIC_DRAW );
-    glBufferSubData( GL_ARRAY_BUFFER, 0, sizeof(point4)*Index, points );
-    glBufferSubData( GL_ARRAY_BUFFER, sizeof(point4)*Index, sizeof(point4)*Index, normals );
-
-    // set up vertex arrays
-    glBindVertexArray( vao );
-    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0,  0);
-    glEnableVertexAttribArray(0);
-
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0,  (void*)(sizeof(point4)*Index));
-    glEnableVertexAttribArray(1);
-    // Temporary lines to test that material toGPU works correctly
-    material = new Material();
-    material->toGPU(pr);*/
-
 // TO DO: Cal implementar en la fase 1 de la practica 2
 // S'ha d'activar la textura i es passa a la GPU
 
 }
-
 
 /**
  * Pintat en la GPU.
@@ -231,6 +200,7 @@ void Object::drawTexture(){
     //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     //glDrawArrays( GL_TRIANGLES, 0, Index );
     this->draw();
+
 
 }
 
@@ -250,12 +220,8 @@ void Object::initTexture()
     qDebug() << "Initializing textures...";
     // Carregar la textura
     glActiveTexture(GL_TEXTURE0);
-    texture = make_shared<QOpenGLTexture>(QImage("://resources/textures/F16s.bmp"));
     texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
     texture->setMagnificationFilter(QOpenGLTexture::Linear);
-
-    texture->bind(0);
-
  }
 
 
