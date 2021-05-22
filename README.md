@@ -16,22 +16,22 @@ Segona pràctica de GiVD 2020-21
         - [ ] Objectes
         - [ ] Escenes virtuals
         - [ ] Escenes de dades Reals 
-    - Material
+    - Material Oriol
     - Light
-        - [ ] Puntual
-        - [ ] Direccional
-        - [ ] Spotlight
-        - [ ] Ambient Global
+        - [x] Puntual Oriol
+        - [x] Direccional Oriol
+        - [x] Spotlight Oriol, María Isabel
+        - [x] Ambient Global Oriol
     - Shading
-        - [ ] Phong
-        - [ ] Gouraud
+        - [X] Phong María Isabel
+        - [X] Gouraud Maria Isabel
     - Textures
         - [ ] Textura com material en un objecte
         - [ ] Textura al pla base
         
 
 - Fase 2 (OPT)
-    - [ ] Toon-shading i èmfasi de siluetes
+    - [x] Toon-shading i èmfasi de siluetes María Isabel
     - [ ] Mapping indirecte de textures
     - [ ] Animacions amb dades temporals
     - [ ] Normal mapping
