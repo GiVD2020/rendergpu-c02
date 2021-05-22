@@ -6,14 +6,14 @@
  */
 Light::Light(LightType t) {
     // TO DO: A canviar a la fase 1 de la practica 2
-    this->lightPosition = vec4(1.0, 2.0, 0.0, 0.0);
-    this->ambiental = vec3(1.0, 0.0, 0.0);
-    this->diffuse = vec3(0.0, 1.0, 0.0);
-    this->specular = vec3(0.0, 0.0, 1.0);
-    this->coeficients = vec3(1.0, 2.0, 8.0);
+    this->lightPosition = vec4(1.0, 1.0, 2.0, 1.0);
+    this->ambiental = vec3(0.2, 0.2, 0.2);
+    this->diffuse = vec3(0.8, 0.8, 0.8);
+    this->specular = vec3(1.0, 1.0, 1.0);
+    this->coeficients = vec3(0.0, 0.2, 0.8);
     this->typo = t;
     this->direction = vec3(1.0, 0.0, 0.5);
-    this->angle = 30.40;
+    this->angle = 10.40;
 }
 
 /**
