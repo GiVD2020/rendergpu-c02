@@ -94,9 +94,39 @@ void main()
             //AMBIENTAL COLOR(local)
             ambiental = vec4(lights[i].ia, 1.0) * materials.ka;
             color = difuseAndSpecular + ambiental;
+
+        } else {
+            /* DIFUSE */
+            L = normalize(vec4(-lights[i].direction, 1.0));  // Ligh direction
+            float cutOff = cos(radians(lights[i].angle));
+
+            if (cutOff > 0.0f) {     // the light is a spotlight
+                vec4 D = lights[i].position - vPosition;  // Spot direction
+                float spotCosine = dot(D,-L);
+
+                if (spotCosine >= cutOff) {
+                    N = vNormal;
+                    float LN = max(dot(D,N), 0.0f);
+                    difuseAndSpecular = vec4(lights[i].id, 1.0) * materials.kd * LN;    //Solo difusa
+
+                    /* SPECULAR */
+                    V = normalize(obs - vPosition);
+                    H = normalize((L + V)/ (sqrt((L.x + V.x)*(L.x + V.x)) +
+                                            sqrt((L.y + V.y)*(L.y + V.y)) +
+                                            sqrt((L.z + V.z)*(L.z + V.z))));
+
+                    float NH = max(dot(H, N), 0.0f);
+                    difuseAndSpecular += vec4(lights[i].is, 1.0) * materials.ks * pow(NH, materials.shine); // Difusa y especular
+
+                    //AMBIENTAL COLOR(local)
+                    ambiental = vec4(lights[i].ia, 1.0) * materials.ka;
+                    color = difuseAndSpecular + ambiental;
+                }
+                else { // The point is outside the cone of light from the spotlight.
+                    color = vec4(lights[i].ia, 1.0) * materials.ka;
+                }
+            }
         }
-
-
     }
     vec4 ambientGlobal = vec4(iAmbientGlobal,1.0);
     color +=  ambientGlobal * materials.ka;
