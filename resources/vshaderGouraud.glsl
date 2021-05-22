@@ -31,7 +31,7 @@ struct LightComponents{
 };
 
 uniform LightComponents lights[5];
-//uniform int lengthLuces;
+uniform int lengthLuces;
 uniform vec3 iAmbientGlobal;
 
 /***       PAS 4      ***/

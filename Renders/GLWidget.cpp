@@ -42,7 +42,7 @@ void GLWidget::initializeGL() {
     initShadersGPU();
 
     // Creacio d'una Light per apoder modificar el seus valors amb la interficie
-    auto l  = make_shared<Light>(Puntual);
+    auto l  = make_shared<Light>(Spot);
     scene->addLight(l);
 
     // Sending lights to GPU

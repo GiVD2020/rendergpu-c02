@@ -11,8 +11,8 @@ Scene::Scene() {
     capsaMinima.p = 2;
     lightAmbientGlobal = vec3(0.3, 0.3, 0.3);
 
-    auto li = make_shared<Light>(Direccional);
-    lights.push_back(li);
+    //auto li = make_shared<Light>(Spot);
+    //lights.push_back(li);
 
 }
 
@@ -110,9 +110,11 @@ void Scene::lightsToGPU(shared_ptr<QGLShaderProgram> program){
             glUniform1i(lightsGPU[i].typeLight, lights[i]->getTipusLight());
         }
     /*  Intento de no hardcodear el numero de luces */
-    //GLuint lengthLuces;
-    //lengthLuces = program->uniformLocation(QString("lengthLuces"));
-    //glUniform1i(lengthLuces, this->lights.size());
+    GLuint lengthLuces;
+
+    lengthLuces = program.get()->uniformLocation(QString("lengthLuces"));
+    glUniform1i(lengthLuces, this->lights.size());
+    qDebug() << lights.size();
 
 }
 
