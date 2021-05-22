@@ -35,7 +35,7 @@ void GLWidget::setScene(shared_ptr<Scene> sc) {
  */
 void GLWidget::initializeGL() {
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
     glEnable(GL_RGBA);
     glEnable(GL_DOUBLE);
 
@@ -64,7 +64,8 @@ void GLWidget::initializeGL() {
 void GLWidget::paintGL() {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     scene->camera->toGPU(program);
-    scene->draw();
+    //scene->draw();
+    scene->drawTexture();
 }
 
 /**
@@ -89,7 +90,10 @@ void GLWidget::initShadersGPU(){
     initShader("://resources/vshaderGouraud.glsl", "://resources/fshaderGouraud.glsl");
     initShader("://resources/vshaderPhong.glsl", "://resources/fshaderPhong.glsl");
     initShader("://resources/vshaderToon.glsl", "://resources/fshaderToon.glsl");
+    initShader("://resources/vshaderPhongText.glsl", "://resources/fshaderPhongText.glsl");
     initShader("://resources/vshader1.glsl", "://resources/fshader1.glsl");
+
+
 }
 
 QSize GLWidget::minimumSizeHint() const {
@@ -224,6 +228,12 @@ void GLWidget::activaGouraudShader() {
 void GLWidget::activaPhongTex() {
     //A implementar a la fase 1 de la practica 2
     qDebug()<<"Estic a Phong Tex";
+    program = programList.at(3);
+    program->link();
+    program->bind();
+    scene->toGPUTexture(program);
+    updateGL();
+    qDebug()<<"Estic a PhongTex";
 
 }
 

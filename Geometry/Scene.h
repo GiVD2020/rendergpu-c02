@@ -37,6 +37,12 @@ class Scene {
 
 public:
 
+    typedef enum {
+        VIRTUALWORLD,
+        REALDATA,
+        TEMPORALVW,
+        TEMPORALDATA
+    } DATA_TYPES;
     lightGPU lightsGPU[5]; //If you change num remember vertexShader
     GLuint lightAmbientGlobalToGPU;
 
@@ -59,6 +65,7 @@ public:
     void setCamera(shared_ptr<Camera> c);
 
     void toGPU(shared_ptr<QGLShaderProgram> p);
+    void toGPUTexture(shared_ptr<QGLShaderProgram> p);
     void draw();
     void drawTexture();
 

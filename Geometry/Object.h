@@ -10,7 +10,7 @@ using namespace Common;
 
 #include <QGLShaderProgram>
 #include <QOpenGLTexture>
-
+#include <QString>
 #include <QFile>
 #include <QRegularExpression>
 #include <QDebug>
@@ -42,6 +42,7 @@ protected:
     int     numPoints;
     point4 *points;
     point4 *normals;
+    vec2 *textures;
 
     // Els colors s'usen en la primera execució però després son prescindibles
     point4 *colors;
@@ -53,6 +54,8 @@ protected:
     shared_ptr<QGLShaderProgram> program;
 
     shared_ptr<QOpenGLTexture> texture;
+
+    QString texturePath;
 
 public:
 

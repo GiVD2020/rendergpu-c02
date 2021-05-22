@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->gridLayout_2->addWidget(glWidget, 0, 0);
     changes = true;
 
-
     // TO DO Fase 1: Construcció del nou Dialeg per a llegir les dades referents a les dades geolocalitzades
 
 
