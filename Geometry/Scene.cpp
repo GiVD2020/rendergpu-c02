@@ -9,7 +9,7 @@ Scene::Scene() {
     capsaMinima.a = 2;
     capsaMinima.h = 2;
     capsaMinima.p = 2;
-    lightAmbientGlobal = vec3(0.3, 0.3, 0.3);
+    lightAmbientGlobal = vec3(0.8, 0.8, 0.8);
 
     auto li = make_shared<Light>(Direccional);
     lights.push_back(li);
