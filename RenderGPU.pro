@@ -12,16 +12,26 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    DataService/ConfigMappingReader.cpp \
+    DataService/RealDataReader.cpp \
+    DataService/VirtualWorldReader.cpp \
     Geometry/Animation.cpp \
     Geometry/Cara.cpp \
     Geometry/ColorMapStatic.cpp \
     Geometry/Light.cpp \
     Geometry/Material.cpp \
     Geometry/Object.cpp \
+    Geometry/Plane.cpp \
+    Geometry/ScaleTG.cpp \
     Geometry/Scene.cpp \
     Geometry/TG.cpp \
     Geometry/TranslateTG.cpp \
     GeometryBuilders/Builder.cpp \
+    GeometryBuilders/Mapping.cpp \
+    GeometryBuilders/ObjectFactory.cpp \
+    GeometryBuilders/SceneFactory.cpp \
+    GeometryBuilders/SceneFactoryData.cpp \
+    GeometryBuilders/SceneFactoryVirtual.cpp \
     main.cpp \
     Renders/Camera.cpp \
     Renders/GLWidget.cpp \
@@ -29,6 +39,9 @@ SOURCES += \
     library/Common.cpp
 
 HEADERS += \
+    DataService/ConfigMappingReader.h \
+    DataService/RealDataReader.h \
+    DataService/VirtualWorldReader.h \
     Geometry/Animation.h \
     Geometry/Cara.h \
     Geometry/ColorMap.h \
@@ -36,10 +49,17 @@ HEADERS += \
     Geometry/Light.h \
     Geometry/Material.h \
     Geometry/Object.h \
+    Geometry/Plane.h \
+    Geometry/ScaleTG.h \
     Geometry/Scene.h \
     Geometry/TG.h \
     Geometry/TranslateTG.h \
     GeometryBuilders/Builder.h \
+    GeometryBuilders/Mapping.h \
+    GeometryBuilders/ObjectFactory.h \
+    GeometryBuilders/SceneFactory.h \
+    GeometryBuilders/SceneFactoryData.h \
+    GeometryBuilders/SceneFactoryVirtual.h \
     IncludeWin32/GL/glut.h \
     Renders/Camera.h \
     Renders/GLWidget.h \
@@ -63,7 +83,12 @@ DISTFILES += \
     libWin32/glut.dll \
     libWin32/glut.lib \
     libWin32/glut32.dll \
-    libWin32/glut32.lib
+    libWin32/glut32.lib \
+    resources/configMapping.txt \
+    resources/configMappingData.txt \
+    resources/data0.txt \
+    resources/data10.txt \
+    resources/virtualScene1.txt
 
 unix {
     INCLUDEPATH += /usr/lib/gcc/x86_64-linux-gnu/9/include

@@ -35,15 +35,19 @@ void GLWidget::setScene(shared_ptr<Scene> sc) {
  */
 void GLWidget::initializeGL() {
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
     glEnable(GL_RGBA);
     glEnable(GL_DOUBLE);
 
     initShadersGPU();
 
     // Creacio d'una Light per apoder modificar el seus valors amb la interficie
-    auto l  = make_shared<Light>(Puntual);
+    auto l  = make_shared<Light>(Direccional);
     scene->addLight(l);
+
+    // Sending lights to GPU
+    scene->lightsToGPU(program);
+    scene->setAmbientToGPU(program);
 
     scene->camera->init(this->size().width(), this->size().height(), scene->capsaMinima);
     emit ObsCameraChanged(scene->camera);
@@ -60,7 +64,8 @@ void GLWidget::initializeGL() {
 void GLWidget::paintGL() {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     scene->camera->toGPU(program);
-    scene->draw();
+    //scene->draw();
+    scene->drawTexture();
 }
 
 /**
@@ -82,7 +87,13 @@ void GLWidget::resizeGL(int width, int height) {
  * @brief GLWidget::initShadersGPU
  */
 void GLWidget::initShadersGPU(){
+    initShader("://resources/vshaderGouraud.glsl", "://resources/fshaderGouraud.glsl");
+    initShader("://resources/vshaderPhong.glsl", "://resources/fshaderPhong.glsl");
+    initShader("://resources/vshaderToon.glsl", "://resources/fshaderToon.glsl");
+    initShader("://resources/vshaderPhongText.glsl", "://resources/fshaderPhongText.glsl");
     initShader("://resources/vshader1.glsl", "://resources/fshader1.glsl");
+
+
 }
 
 QSize GLWidget::minimumSizeHint() const {
@@ -109,6 +120,9 @@ void GLWidget::initShader(const char* vShaderFile, const char* fShaderFile){
     program->addShader(fshader);
     program->link();
     program->bind();
+    //scene->lightsToGPU(program);
+
+    programList.push_back(program);
 }
 
 /** Gestio de les animacions i la gravació d'imatges ***/
@@ -181,17 +195,32 @@ void GLWidget::saveAnimation() {
 
 void GLWidget::activaToonShader() {
     //A implementar a la fase 1 de la practica 2
+    program = programList.at(2);
+    program->link();
+    program->bind();
+    scene->toGPU(program);
+    updateGL();
     qDebug()<<"Estic a Toon";
 }
 
 void GLWidget::activaPhongShader() {
     //Opcional: A implementar a la fase 1 de la practica 2
+    program = programList.at(1);
+    program->link();
+    program->bind();
+    scene->toGPU(program);
+    updateGL();
     qDebug()<<"Estic a Phong";
 
 }
 
 void GLWidget::activaGouraudShader() {
     //A implementar a la fase 1 de la practica 2
+    program = programList.at(0);
+    program->link();
+    program->bind();
+    scene->toGPU(program);
+    updateGL();
     qDebug()<<"Estic a Gouraud";
 
 }
@@ -199,6 +228,13 @@ void GLWidget::activaGouraudShader() {
 void GLWidget::activaPhongTex() {
     //A implementar a la fase 1 de la practica 2
     qDebug()<<"Estic a Phong Tex";
+    program = programList.at(3);
+    program->link();
+    program->bind();
+    scene->toGPUTexture(program);
+    updateGL();
+    qDebug()<<"Estic a PhongTex";
+
 }
 
 void GLWidget::activaBackground() {
