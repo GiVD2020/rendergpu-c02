@@ -130,6 +130,7 @@ void GLWidget::initShader(const char* vShaderFile, const char* fShaderFile){
 void GLWidget::setCurrentFrame(){
 
     scene->update(currentFrame);
+    scene->toGPU(program); //Actualizar la camera a la hora de la TG
     updateGL();
     this->saveFrame();
     currentFrame++;
@@ -189,7 +190,7 @@ void GLWidget::saveAnimation() {
     currentFrame=0;
     currentImage=0;
     connect(timer, SIGNAL(timeout()), this, SLOT(setCurrentFrame()));
-    timer->start(1000);
+    timer->start(1000); //
 
 }
 

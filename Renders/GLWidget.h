@@ -38,6 +38,7 @@ public slots:
 
     void updateObject(shared_ptr<Object> obj);
     void updateScene(shared_ptr<Scene> sc);
+    //void updateAnimatedScene(shared_ptr<Scene> sc);
 
     void saveImage();
     void saveAnimation();
