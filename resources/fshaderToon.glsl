@@ -52,13 +52,13 @@ void main()
 
             float intensity = dot(normalize(vec4(lights[i].direction, 1.0)), normalize(Normal));
             if (intensity > 0.75) {
-                colorOut = vec4(1.0,0.8,0.5,1.0);
+                colorOut = materials.kd * (1- intensity);
             } else if (intensity > 0.5) {
-                colorOut = vec4(0.6,0.3,0.3,1.0);
+                colorOut = materials.kd * (1- intensity);
             } else if (intensity > 0.25) {
-                colorOut = vec4(0.4,0.2,0.2,1.0);
+                colorOut = materials.kd * (1- intensity);
             } else {
-                colorOut = vec4(0.2,0.1,0.1,1.0);
+                colorOut = materials.kd * (1- intensity);
             }
 
         } else if (lights[i].typeLight == 1) {  //Direccional
@@ -67,13 +67,13 @@ void main()
 
             float intensity = dot(normalize(vec4(lights[i].direction, 1.0)), normalize(Normal));
             if (intensity > 0.75) {
-                colorOut = vec4(1.0,0.8,0.5,1.0);
+                colorOut = materials.kd * (1- intensity);
             } else if (intensity > 0.5) {
-                colorOut = vec4(0.6,0.3,0.3,1.0);
+                colorOut = materials.kd * (1- intensity);
             } else if (intensity > 0.25) {
-                colorOut = vec4(0.4,0.2,0.2,1.0);
+                colorOut = materials.kd * (1- intensity);
             } else {
-                colorOut = vec4(0.2,0.1,0.1,1.0);
+                colorOut = materials.kd * (1- intensity);
             }
 
         } else {
@@ -91,14 +91,15 @@ void main()
 
                     float intensity = dot(normalize(vec4(lights[i].direction, 1.0)), normalize(Normal));
                     if (intensity > 0.75) {
-                        colorOut = vec4(1.0,0.8,0.5,1.0);
+                        colorOut = materials.kd * (1- intensity);
                     } else if (intensity > 0.5) {
-                        colorOut = vec4(0.6,0.3,0.3,1.0);
+                        colorOut = materials.kd * (1- intensity);
                     } else if (intensity > 0.25) {
-                        colorOut = vec4(0.4,0.2,0.2,1.0);
+                        colorOut = materials.kd * (1- intensity);
                     } else {
-                        colorOut = vec4(0.2,0.1,0.1,1.0);
+                        colorOut = materials.kd * (1- intensity);
                     }
+
                 }
                 else { // The point is outside the cone of light from the spotlight.
                     colorOut = vec4(lights[i].ia, 1.0) * materials.ka;
