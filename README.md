@@ -91,6 +91,15 @@ PAS1:
 
 - Per poder carregar dades: File -> Obre dades -> configMappingData.txt -> data10.tx
 ![image](https://user-images.githubusercontent.com/55766197/119390346-32b56b80-bccd-11eb-8b94-38b06777f320.png)
+
+PAS2:
+- Per comprobar que el material arriba correctament asignem a la component ambiental (1.0, 0.0, 0.0, 1.0) i asignem aquesta component al colorOut del shader:
+- ![image](https://user-images.githubusercontent.com/47833532/119391178-5331f580-bcce-11eb-85d6-2230745b0754.png)
+
+PAS3:
+- Aquest es fa de forma analoga com el pas 2, la captura es una comprovació de la llum ambient global:
+- ![image](https://user-images.githubusercontent.com/47833532/119391337-82e0fd80-bcce-11eb-88b8-e9750d94b539.png)
+
 *(NOTA2: Breu explicació, si cal, de com replicar els vostres resultats)*
 
 ## **Additional Information**
