@@ -183,7 +183,7 @@ El material per les següents proves estarà amb els paràmetres:
 
 - Animació amb jupiter.obj(agafat d'internet), que té textura i normal mapping. Per fer l'animació hem jugat amb una TG que mou l'objecte a una velocitat constant, hem situat la camera propera al planeta i fet un zoom out:
 <p align="center">
-    <img width="600" height="400" src= https://user-images.githubusercontent.com/52278195/119402551-626c6f80-bcdd-11eb-9031-0b1799833f4e.png>
+    <img width="600" height="400" src= https://user-images.githubusercontent.com/52278195/119401170-6dbe9b80-bcdb-11eb-8ff9-87b3faec965f.gif>
 </p> 
 
         [WARNING: com que això serà un gif, no ho possarem al PDF. Estarà al issue 11 del projecte]
