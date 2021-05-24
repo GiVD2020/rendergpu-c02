@@ -66,8 +66,8 @@ Per carregar les escenes, hem reutilitzat la idea de l'anterior pràctica: mitja
 
 Com a guia:
 
-Per poder carregar una escena virtual: File -> Obre escena -> configMapping.txt -> virtualScene1.txt
-Per poder carregar dades: File -> Obre dades -> configMappingData.txt -> data10.txt
+- Per poder carregar una escena virtual: File -> Obre escena -> configMapping.txt -> virtualScene1.txt
+- Per poder carregar dades: File -> Obre dades -> configMappingData.txt -> data10.txt
 
 #### *PASOS 2 I 3*
 En el desenvolupament dels passos 2 i 3, l'estratègia va ser molt semblant entre ells. Primer de tot, llegim el pas a pas del guió. En ambdós casos, vam tenir problemes amb l'enviament de les dades als shaders i, per tant, vam haver de tornar a fer els passos de mica en mica.
@@ -102,7 +102,7 @@ Per programar el normal mapping, primerament hem canviat els shaders que teníem
 
 *(NOTA: Per a cada pas de l'enunciat (del 1 al 6), incloure captures de pantalla de les proves que heu fet per a demostrar la funcionalitat de la vostra pràctica amb explicacions de la seva configuració i com les heu aconseguides)*
 
-#### PAS1:
+#### PAS 1:
 
 - Per poder carregar una escena virtual: File -> Obre escena -> configMapping.txt -> virtualScene1.txt
 
@@ -116,14 +116,14 @@ Per programar el normal mapping, primerament hem canviat els shaders que teníem
   <img width="600" height="500" src=https://user-images.githubusercontent.com/55766197/119390346-32b56b80-bccd-11eb-8b94-38b06777f320.png>
 </p>
 
-#### PAS2:
+#### PAS 2:
 - Per comprobar que el material arriba correctament asignem a la component ambiental (1.0, 0.0, 0.0, 1.0) i asignem aquesta component al colorOut del shader:
 
 <p align="center">
   <img width="500" height="500" src=https://user-images.githubusercontent.com/47833532/119391178-5331f580-bcce-11eb-85d6-2230745b0754.png>
 </p>
 
-#### PAS3:
+#### PAS 3:
 - Aquest es fa de forma analoga com el pas 2, la captura es una comprovació de la llum ambient global:
 
 <p align="center">
@@ -160,7 +160,7 @@ El material per les següents proves estarà amb els paràmetres:
   <img width="600" height="500" src=https://user-images.githubusercontent.com/57969201/119398356-bbd1a000-bcd7-11eb-8082-69367289dda0.png>
 </p>
 
-- Toon Sahder, amb la llum Spot, l'obj capsule
+- Toon Shader, amb la llum Spot, l'obj capsule
 <p align="center">
   <img width="600" height="500" src=https://user-images.githubusercontent.com/57969201/119398823-677af000-bcd8-11eb-9afb-fb55e820ff01.png>
 </p>
@@ -185,9 +185,6 @@ El material per les següents proves estarà amb els paràmetres:
 <p align="center">
     <img width="600" height="400" src= https://user-images.githubusercontent.com/52278195/119401170-6dbe9b80-bcdb-11eb-8ff9-87b3faec965f.gif>
 </p> 
-
-        [WARNING: com que això serà un gif, no ho possarem al PDF. Estarà al issue 11 del projecte]
-
 
 
 
