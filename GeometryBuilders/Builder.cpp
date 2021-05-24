@@ -7,7 +7,7 @@ Builder::Builder(GLWidget *glWid)
 {
     glWidget = glWid;
     scene = glWidget->getScene();
-
+    dataAnim = new DataAnimation();
 }
 
 void Builder::newObjFromFile()
@@ -38,6 +38,8 @@ void Builder::newVirtualScene() {
             auto s = sceneFactory->createScene(fileName);
             glWidget->setScene(s);
             this->scene = glWidget->getScene();
+            auto l  = make_shared<Light>(Puntual);
+            scene->addLight(l);
             emit newScene(scene);
         }
     }
@@ -59,9 +61,16 @@ void Builder::newDataScene()
             auto s = sceneFactory->createScene(fileName);
             glWidget->setScene(s);
             this->scene = glWidget->getScene();
+            auto l  = make_shared<Light>(Puntual);
+            scene->addLight(l);
             emit newScene(scene);
         }
     }
     // Opcionalment pots crear un dialeg per posar els valors del mapping
+}
+
+void Builder::saveAnimationScene()
+{
+    this->dataAnim->OneSphere(this->scene);
 }
 
