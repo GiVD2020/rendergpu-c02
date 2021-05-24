@@ -178,11 +178,12 @@ El material per les següents proves estarà amb els paràmetres:
 #### FASE 2 (OPCIONALS):
 - Exemple de normal mapping. Per veure-ho hem d'activar els shaders amb textura i normal a GLWidget i treure els que nomes tenen textura. File -> Obrir fitxer.obj -> JUPITER.obj -> Texture (abaix entre transformation i point light) -> Browse -> jupiter.png -> Textures(adalt) -> PhonText:
 <p align="center">
-    <img width="600" height="500" src=https://user-images.githubusercontent.com/52278195/119401692-208ef980-bcdc-11eb-9e33-67b67ec36e7d.png>
+    <img width="600" height="400" src=https://user-images.githubusercontent.com/52278195/119401692-208ef980-bcdc-11eb-9e33-67b67ec36e7d.png>
 </p>    
 
 - Animació amb jupiter.obj(agafat d'internet), que té textura i normal mapping. Per fer l'animació hem jugat amb una TG que mou l'objecte a una velocitat constant, hem situat la camera propera al planeta i fet un zoom out:
 
+        [WARNING: com que això serà un gif, no ho possarem al PDF. Estarà al issue 11 del projecte]
 
 
 
