@@ -10,6 +10,8 @@ Segona pràctica de GiVD 2020-21
 
 *(NOTA: Petit resum del què heu fet, no més de 200 paraules)*
 
+Per aquesta pràctica hem pogut desenvolupar tota la part obligatòria (Fase 1), i implementar alguns opcionals de la Fase 1 i Fase 2.
+
 **Features**
 
 - Fase 1
