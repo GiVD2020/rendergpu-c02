@@ -165,7 +165,12 @@ El material per les següents proves estarà amb els paràmetres:
   <img width="600" height="500" src=https://user-images.githubusercontent.com/57969201/119398823-677af000-bcd8-11eb-9afb-fb55e820ff01.png>
 </p>
 
+###PAS 5:
 
+- Cruiser amb la seva textura: File -> Obrir fitxer.obj -> cruiser.obj -> Texture (abaix entre transformation i point light) -> Browse -> cruiser.bmp -> Textures(adalt) -> PhonText
+<p align="center">
+    <img width="600" height="500" src=https://user-images.githubusercontent.com/55766197/119399580-5c748f80-bcd9-11eb-97fa-1dac07d8c290.png>
+</p>
 
 ## **Additional Information**
 
