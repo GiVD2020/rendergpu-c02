@@ -14,9 +14,9 @@ Segona pràctica de GiVD 2020-21
 
 - Fase 1
     - Adaptació a la lectura de fitxers de dades
-        - [ ] Objectes
-        - [ ] Escenes virtuals
-        - [ ] Escenes de dades Reals 
+        - [x] Objectes Eric, Angel
+        - [x] Escenes virtuals Eric, Angel
+        - [x] Escenes de dades Reals Eric,Angel
     - Material Oriol
     - Light
         - [x] Puntual Oriol
@@ -27,15 +27,15 @@ Segona pràctica de GiVD 2020-21
         - [X] Phong María Isabel
         - [X] Gouraud Maria Isabel
     - Textures
-        - [ ] Textura com material en un objecte
-        - [ ] Textura al pla base
+        - [x] Textura com material en un objecte Eric,Angel
+        - [x] Textura al pla base Eric,Angel
         
 
 - Fase 2 (OPT)
     - [x] Toon-shading i èmfasi de siluetes María Isabel
     - [ ] Mapping indirecte de textures
     - [ ] Animacions amb dades temporals
-    - [ ] Normal mapping
+    - [x] Normal mapping Angel
     - [ ] Entorn amb textures
     - [ ] Reflexions
     - [ ] Transparencias via objectes.
