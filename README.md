@@ -51,7 +51,7 @@ Encara que cadascun ha treballat de forma més individual, tots hem avançat al 
 ## **Memòria**
 
 *(NOTA: Explicació només dels diferents punts que heu desenvolupat i funcionen, detallant les estratègies que heu fet servir)*
-### **_FASE 2_**
+### **_FASE 1_**
 
 
 #### *PAS 1*
@@ -68,8 +68,12 @@ A l'hora de testejar que l'enviament era correcte, vam posar el color de sortida
 
 ### **_FASE 2_**
 
+#### *TOON SHADING I ENFASIS DE SILUETES*
+
 #### *ANIMACIONS*
 En el desenvolupament de les animacions se'ns donava bastant codi ja implementat. En aquest cas, a l'hora de fer el desenvolupament, primer hem creat la classe DataAnimation per crear les escenes d'animació amb les transformacions geomètriques corresponents. Seguidament, vam crear un botó extra en el menú per poder carregar aquesta escena i evitar conflictes de codi amb els altres botons, com per exemple "Save and Start Animation". El mètode associat a aquest botó el trobarem a la classe Builder amb el nom saveAnimationScene. Aquí apliquem l'escena que vulguem dins de DataAnimation per carregar l'escena. Per últim en el mètode setFrame haurem de posar el mètode toGpu per tal que s'actualitzi l'escena a la GPU.
+
+#### *NORMAL MAPPING*
 
 ## **Screenshots**
 
