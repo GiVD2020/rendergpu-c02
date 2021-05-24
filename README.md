@@ -47,7 +47,10 @@ Encara que cadascun ha treballat de forma més individual, tots hem avançat al 
 ## **Extensions**
 
 Hem afegit un nou botó a la window: "Carregar Animated Scene". Parlarem més endavant d'ell, però, en poques paraules, serveix per carregar el contingut de l'escena de la classe DataAnimation.
-![image](https://user-images.githubusercontent.com/57969201/119395286-93e03d80-bcd3-11eb-8b89-893fe9c59ef8.png)
+
+<p align="center">
+  <img width="300" height="250" src=https://user-images.githubusercontent.com/57969201/119395286-93e03d80-bcd3-11eb-8b89-893fe9c59ef8.png>
+</p>
 
 
 ## **Memòria**
@@ -99,26 +102,73 @@ Per programar el normal mapping, primerament hem canviat els shaders que teníem
 
 *(NOTA: Per a cada pas de l'enunciat (del 1 al 6), incloure captures de pantalla de les proves que heu fet per a demostrar la funcionalitat de la vostra pràctica amb explicacions de la seva configuració i com les heu aconseguides)*
 
-PAS1:
+#### PAS1:
 
 - Per poder carregar una escena virtual: File -> Obre escena -> configMapping.txt -> virtualScene1.txt
-![image](https://user-images.githubusercontent.com/55766197/119390220-07328100-bccd-11eb-964c-ec091f55d624.png)
+
+<p align="center">
+  <img width="600" height="500" src=https://user-images.githubusercontent.com/55766197/119390220-07328100-bccd-11eb-964c-ec091f55d624.png>
+</p>
 
 - Per poder carregar dades: File -> Obre dades -> configMappingData.txt -> data10.tx
-![image](https://user-images.githubusercontent.com/55766197/119390346-32b56b80-bccd-11eb-8b94-38b06777f320.png)
 
-PAS2:
+<p align="center">
+  <img width="600" height="500" src=https://user-images.githubusercontent.com/55766197/119390346-32b56b80-bccd-11eb-8b94-38b06777f320.png>
+</p>
+
+#### PAS2:
 - Per comprobar que el material arriba correctament asignem a la component ambiental (1.0, 0.0, 0.0, 1.0) i asignem aquesta component al colorOut del shader:
-- ![image](https://user-images.githubusercontent.com/47833532/119391178-5331f580-bcce-11eb-85d6-2230745b0754.png)
 
-PAS3:
+<p align="center">
+  <img width="500" height="500" src=https://user-images.githubusercontent.com/47833532/119391178-5331f580-bcce-11eb-85d6-2230745b0754.png>
+</p>
+
+#### PAS3:
 - Aquest es fa de forma analoga com el pas 2, la captura es una comprovació de la llum ambient global:
-- ![image](https://user-images.githubusercontent.com/47833532/119391337-82e0fd80-bcce-11eb-88b8-e9750d94b539.png)
 
-*(NOTA2: Breu explicació, si cal, de com replicar els vostres resultats)*
+<p align="center">
+  <img width="800" height="500" src=https://user-images.githubusercontent.com/47833532/119391337-82e0fd80-bcce-11eb-88b8-e9750d94b539.png>
+</p>
+
+#### PAS 4:
+Aquest Pas está molt més explicat al segünt apartat, però aquí hi ha unes imatges per veure el funcionament dels shaders:
+La llum per les següents proves estarà amb els parámetres:
+```
+    this->lightPosition = vec4(1.0, 1.0, 2.0, 1.0);
+    this->ambiental = vec3(0.2, 0.2, 0.2);
+    this->diffuse = vec3(0.8, 0.8, 0.8);
+    this->specular = vec3(1.0, 1.0, 1.0);
+    this->coeficients = vec3(0.0, 0.2, 0.8);
+    this->typo = t;
+    this->direction = vec3(1.0, 0.0, 0.5);
+    this->angle = 10.40;
+```
+El material per les següents proves estarà amb els paràmetres:
+```
+    this->ambiental = vec4(0.2, 0.2, 0.2, 1.0);
+    this->diffuse = vec4(0.8, 0.5, 0.5, 1.0);
+    this->specular = vec4(0.5, 0.5, 0.5, 1.0);
+    this->shiness = 20.0;
+```
+- Gouraud Shader, amb llum Direcccional, l'obj Bunny.
+<p align="center">
+  <img width="600" height="500" src=https://user-images.githubusercontent.com/57969201/119397028-e9b5e500-bcd5-11eb-86ce-27fed68cf308.png>
+</p>
+
+- Phong Shader, amb la llum Puntual, l'obj Armadillo
+<p align="center">
+  <img width="600" height="500" src=https://user-images.githubusercontent.com/57969201/119398356-bbd1a000-bcd7-11eb-8082-69367289dda0.png>
+</p>
+
+- Toon Sahder, amb la llum Spot, l'obj capsule
+<p align="center">
+  <img width="600" height="500" src=https://user-images.githubusercontent.com/57969201/119398823-677af000-bcd8-11eb-9afb-fb55e820ff01.png>
+</p>
+
+
 
 ## **Additional Information**
 
 Para información más detallada, hay varios issues abiertos sobre el desarrollo de las partes del proyecto:
-- Parte 4: Shaders y opcional Toon 
-- Parte 5: texturas y pruebas con Blender
+- Parte 4: Shaders i opcional Toon en "Progreso del Paso 4" issue https://github.com/GiVD2020/rendergpu-c02/issues/8
+- Parte 5: Textures i proves con Blender en "Paso 5 texturas" issue https://github.com/GiVD2020/rendergpu-c02/issues/11
