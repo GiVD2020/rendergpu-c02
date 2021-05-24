@@ -90,8 +90,8 @@ void GLWidget::initShadersGPU(){
     initShader("://resources/vshaderGouraud.glsl", "://resources/fshaderGouraud.glsl");
     initShader("://resources/vshaderPhong.glsl", "://resources/fshaderPhong.glsl");
     initShader("://resources/vshaderToon.glsl", "://resources/fshaderToon.glsl");
-    initShader("://resources/vshaderPhongText.glsl", "://resources/fshaderPhongText.glsl");
-    //initShader("://resources/vshaderPhongTextNormal.glsl", "://resources/fshaderPhongTextNormal.glsl");
+    //initShader("://resources/vshaderPhongText.glsl", "://resources/fshaderPhongText.glsl");
+    initShader("://resources/vshaderPhongTextNormal.glsl", "://resources/fshaderPhongTextNormal.glsl");
     initShader("://resources/vshader1.glsl", "://resources/fshader1.glsl");
 
 
@@ -131,7 +131,7 @@ void GLWidget::initShader(const char* vShaderFile, const char* fShaderFile){
 void GLWidget::setCurrentFrame(){
 
     scene->update(currentFrame);
-    scene->toGPU(program); //Actualizar la camera a la hora de la TG
+    scene->toGPUTexture(program); //Actualizar la camera a la hora de la TG
     updateGL();
     this->saveFrame();
     currentFrame++;
@@ -186,12 +186,17 @@ void GLWidget::updateScene(shared_ptr<Scene> sc) {
 /** Metodes que es criden des dels menús */
 
 void GLWidget::saveAnimation() {
+    program = programList.at(3);
+    program->link();
+    program->bind();
+    scene->toGPUTexture(program);
+    updateGL();
     // Comença el timer de l'animació
     timer = new QTimer(this);
     currentFrame=0;
     currentImage=0;
     connect(timer, SIGNAL(timeout()), this, SLOT(setCurrentFrame()));
-    timer->start(1000); //
+    timer->start(330); //
 
 }
 
