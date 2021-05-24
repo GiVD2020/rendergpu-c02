@@ -29,5 +29,7 @@
         <file>resources/textures/F16s.bmp</file>
         <file>resources/vshaderText.glsl</file>
         <file>resources/fshaderText.glsl</file>
+        <file>resources/fshaderPhongTextNormal.glsl</file>
+        <file>resources/vshaderPhongTextNormal.glsl</file>
     </qresource>
 </RCC>

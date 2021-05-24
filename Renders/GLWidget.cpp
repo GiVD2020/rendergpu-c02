@@ -91,6 +91,7 @@ void GLWidget::initShadersGPU(){
     initShader("://resources/vshaderPhong.glsl", "://resources/fshaderPhong.glsl");
     initShader("://resources/vshaderToon.glsl", "://resources/fshaderToon.glsl");
     initShader("://resources/vshaderPhongText.glsl", "://resources/fshaderPhongText.glsl");
+    //initShader("://resources/vshaderPhongTextNormal.glsl", "://resources/fshaderPhongTextNormal.glsl");
     initShader("://resources/vshader1.glsl", "://resources/fshader1.glsl");
 
 
@@ -324,12 +325,17 @@ void GLWidget::setLighting(const QVector3D &lightPos, const QVector3D &Ia, const
 void GLWidget::setTextureFile(const QString &file)
 {
     shared_ptr<QOpenGLTexture> texture;
-
+    shared_ptr<QOpenGLTexture> textureN;
+    QStringList fileSpliter = file.split(".");
+    QString textureNormals;
+    textureNormals = fileSpliter[0];
+    textureNormals.append("N.png");
     texture = make_shared<QOpenGLTexture>(QImage(file).mirrored());
-
+    textureN = make_shared<QOpenGLTexture>(QImage(textureNormals).mirrored());
     // TO DO: A modificar en la fase 1 de la practica 2
     // Per ara es posa la textura al primer objecte de l'escena
     scene->objects[0]->setTexture(texture);
+    scene->objects[0]->setTextureN(textureN);
 
 }
 

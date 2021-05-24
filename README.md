@@ -1,15 +1,16 @@
 # RenderGPU
 Segona pràctica de GiVD 2020-21
 
-    Aquest és el model base del README.rst que haureu d'omplir com a documentació de la pràctica. De cara a la presentació d'qeust document, si us plau, esborreu les notes i aquest text. 
+    Ángel Morales Carrasco NIUB 20150546
+    Eric Duque Martín NIUB 20150443
+    Oriol Saguillo González NIUB 20150502
+    María Isabel González Sánchez NIUB 20221913
     
 **Abstract**
 
 *(NOTA: Petit resum del què heu fet, no més de 200 paraules)*
 
 **Features**
-
-*(NOTA: Quines parts heu desenvolupat i qui ho ha fet de l'equip. Editeu la llista que teniu a continuació afegint darrera de cada punt, la/es persona/es que ha treballat en aquell punt.) *
 
 - Fase 1
     - Adaptació a la lectura de fitxers de dades
@@ -57,4 +58,6 @@ Segona pràctica de GiVD 2020-21
 
 **Additional Information**
 
-*(NOTA: Hores de dedicació i problemes que heu tingut fent la pràctica)*
+Para información más detallada, hay varios issues abiertos sobre el desarrollo de las partes del proyecto:
+- Parte 4: Shaders y opcional Toon
+- Parte 5: texturas y pruebas con Blender

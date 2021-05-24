@@ -54,6 +54,7 @@ protected:
     shared_ptr<QGLShaderProgram> program;
 
     shared_ptr<QOpenGLTexture> texture;
+    shared_ptr<QOpenGLTexture> textureN;
 
     QString texturePath;
 
@@ -66,6 +67,8 @@ public:
     void parseObjFile(const QString &fileName);
 
     void setTexture(shared_ptr<QOpenGLTexture> t);
+    void setTextureN(shared_ptr<QOpenGLTexture> t);
+
 
     virtual void make();
     virtual void toGPU(shared_ptr<QGLShaderProgram> p);
