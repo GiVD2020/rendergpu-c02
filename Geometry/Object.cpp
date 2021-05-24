@@ -204,9 +204,9 @@ void Object::drawTexture(){
 
     // TO DO: Cal implementar en la fase 1 de la practica 2
     // S'ha d'activar la textura i es passa a la GPU
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    glDrawArrays( GL_TRIANGLES, 0, Index );
-    //this->draw();
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    //glDrawArrays( GL_TRIANGLES, 0, Index );
+    this->draw();
 
 
 }
