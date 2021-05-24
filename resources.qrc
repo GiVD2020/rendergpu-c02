@@ -29,5 +29,10 @@
         <file>resources/textures/F16s.bmp</file>
         <file>resources/vshaderText.glsl</file>
         <file>resources/fshaderText.glsl</file>
+        <file>resources/fshaderPhongTextNormal.glsl</file>
+        <file>resources/vshaderPhongTextNormal.glsl</file>
+        <file>resources/models/JUPITER.obj</file>
+        <file>resources/textures/jupiter.png</file>
+        <file>resources/textures/jupiterN.png</file>
     </qresource>
 </RCC>

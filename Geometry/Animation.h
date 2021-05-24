@@ -9,7 +9,7 @@
 
 #include <Geometry/TG.h>
 
-#define MAXFRAMES 1
+#define MAXFRAMES 450  //Maxim de Frames per fer les animacions
 
 using namespace std;
 
@@ -20,7 +20,7 @@ public:
  int frameFinal;
  shared_ptr<TG>  transf;
 
- Animation(): frameIni(0), frameFinal(10), transf(NULL) {}
+ Animation(): frameIni(0), frameFinal(455), transf(NULL) {}
 
  //  "operator =" per la classe  Animation
  Animation &operator =(const Animation &rhs) {

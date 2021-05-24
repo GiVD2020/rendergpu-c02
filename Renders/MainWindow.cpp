@@ -36,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this->ui->action_obre_fitxer, SIGNAL(triggered()), builder, SLOT(newObjFromFile()));
     connect(this->ui->action_obre_escena, SIGNAL(triggered()), builder, SLOT(newVirtualScene()));
     connect(this->ui->action_obre_dades, SIGNAL(triggered()), builder, SLOT(newDataScene()));
+    connect(this->ui->action_carregar_Animated_Scene, SIGNAL(triggered()), builder, SLOT(saveAnimationScene()));
     connect(this->ui->action_save_frame_as_image, SIGNAL(triggered()), glWidget, SLOT(saveImage()));
     connect(this->ui->action_start_and_save_animation, SIGNAL(triggered()), glWidget, SLOT(saveAnimation()));
 

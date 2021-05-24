@@ -7,7 +7,7 @@ Builder::Builder(GLWidget *glWid)
 {
     glWidget = glWid;
     scene = glWidget->getScene();
-
+    dataAnim = new DataAnimation();
 }
 
 void Builder::newObjFromFile()
@@ -63,5 +63,10 @@ void Builder::newDataScene()
         }
     }
     // Opcionalment pots crear un dialeg per posar els valors del mapping
+}
+
+void Builder::saveAnimationScene()
+{
+    this->dataAnim->OneSphere(this->scene);
 }
 

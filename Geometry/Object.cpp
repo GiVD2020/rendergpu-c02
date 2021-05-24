@@ -148,6 +148,13 @@ void Object::toGPUTexture(shared_ptr<QGLShaderProgram> pr) {
     texture->bind(0);
     program->setUniformValue("texMap", 0);
 
+
+    /*NOTA MUY IMMPORTANTE. Para visualizar una textura con Normales, hemos de
+    tener un fichero con el mismo Nombre preo acabado en N MAYUSCULA
+    */
+    texture->bind(1);
+    program->setUniformValue("NormMap", 1);
+
     // Creació d'un vertex array object
     glGenVertexArrays( 1, &vao );
     glBindVertexArray( vao );
@@ -197,9 +204,9 @@ void Object::drawTexture(){
 
     // TO DO: Cal implementar en la fase 1 de la practica 2
     // S'ha d'activar la textura i es passa a la GPU
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    glDrawArrays( GL_TRIANGLES, 0, Index );
-    //this->draw();
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    //glDrawArrays( GL_TRIANGLES, 0, Index );
+    this->draw();
 
 
 }
@@ -208,6 +215,13 @@ void Object::setTexture(shared_ptr<QOpenGLTexture> t){
    texture = t;
    initTexture();
 
+}
+
+void Object::setTextureN(shared_ptr<QOpenGLTexture> t){
+   textureN = t;
+   glActiveTexture(GL_TEXTURE1);
+   textureN->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
+   textureN->setMagnificationFilter(QOpenGLTexture::Linear);
 }
 
 /**
