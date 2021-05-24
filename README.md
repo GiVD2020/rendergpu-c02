@@ -59,10 +59,6 @@ Per fer el pas 1 hem hagut d'importar classes de la pràctica anterior ja que ja
 
 Per carregar les escenes hem reutilitzat la idea de l'anterior práctica, mitjançant un fitxer amb la configuració de l'escena (configMapping) i un fitxer on cada linia representa el path del objecte i/o la seva textura afegim aquests objectes a l'escena. 
 
-Com a guia:
-- Per poder carregar una escena virtual: File -> Obre escena -> configMapping.txt -> virtualScene1.txt
-- Per poder carregar dades: File -> Obre dades -> configMappingData.txt -> data10.txt
-
 #### *PASOS 2 I 3*
 En el desenvolupament dels passos 2 i 3, l'estratègia va ser molt semblant entre ells. Primer de tot, llegim el pas a pas del guió. En ambdós casos, vam tenir problemes amb l'enviament de les dades als shaders i, per tant, vam haver de tornar a fer els passos de mica en mica.
 
@@ -88,6 +84,13 @@ Per programar el normal mapping, primerament hem canviat els shaders que teníem
 
 *(NOTA: Per a cada pas de l'enunciat (del 1 al 6), incloure captures de pantalla de les proves que heu fet per a demostrar la funcionalitat de la vostra pràctica amb explicacions de la seva configuració i com les heu aconseguides)*
 
+PAS1:
+
+- Per poder carregar una escena virtual: File -> Obre escena -> configMapping.txt -> virtualScene1.txt
+![image](https://user-images.githubusercontent.com/55766197/119390220-07328100-bccd-11eb-964c-ec091f55d624.png)
+
+- Per poder carregar dades: File -> Obre dades -> configMappingData.txt -> data10.tx
+![image](https://user-images.githubusercontent.com/55766197/119390346-32b56b80-bccd-11eb-8b94-38b06777f320.png)
 *(NOTA2: Breu explicació, si cal, de com replicar els vostres resultats)*
 
 ## **Additional Information**
