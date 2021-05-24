@@ -170,6 +170,21 @@ El material per les següents proves estarà amb els paràmetres:
 <p align="center">
     <img width="600" height="500" src=https://user-images.githubusercontent.com/55766197/119399580-5c748f80-bcd9-11eb-97fa-1dac07d8c290.png>
 </p>
+-Boca d'incendis(agafada d'internet amb blender) amb la seva textura: File -> Obrir fitxer.obj -> fire.obj -> Texture (abaix entre transformation i point light) -> Browse -> fire.png -> Textures(adalt) -> PhonText
+<p align="center">
+    <img width="600" height="500" src=https://user-images.githubusercontent.com/52278195/119401821-5af89680-bcdc-11eb-8ee5-f4c42c049a66.png>
+</p>
+
+#### FASE 2 (OPCIONALS):
+- Exemple de normal mapping. Per veure-ho hem d'activar els shaders amb textura i normal a GLWidget i treure els que nomes tenen textura. File -> Obrir fitxer.obj -> JUPITER.obj -> Texture (abaix entre transformation i point light) -> Browse -> jupiter.png -> Textures(adalt) -> PhonText:
+<p align="center">
+    <img width="600" height="500" src=https://user-images.githubusercontent.com/52278195/119401692-208ef980-bcdc-11eb-9e33-67b67ec36e7d.png>
+</p>    
+
+- Animació amb jupiter.obj(agafat d'internet), que té textura i normal mapping. Per fer l'animació hem jugat amb una TG que mou l'objecte a una velocitat constant, hem situat la camera propera al planeta i fet un zoom out:
+
+
+
 
 ## **Additional Information**
 
