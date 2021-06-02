@@ -10,7 +10,7 @@ using namespace Common;
 
 #include <QGLShaderProgram>
 #include <QOpenGLTexture>
-
+#include <QString>
 #include <QFile>
 #include <QRegularExpression>
 #include <QDebug>
@@ -20,6 +20,7 @@ using namespace Common;
 #include <Geometry/TG.h>
 #include <Geometry/Animation.h>
 #include <Geometry/Cara.h>
+#include <Geometry/Material.h>
 
 typedef vec4  point4;
 
@@ -41,15 +42,21 @@ protected:
     int     numPoints;
     point4 *points;
     point4 *normals;
+    vec2 *textures;
 
     // Els colors s'usen en la primera execució però després son prescindibles
     point4 *colors;
+
+    Material *material;
 
     int Index; // index de control del numero de vertexs a passar a la GPU
 
     shared_ptr<QGLShaderProgram> program;
 
     shared_ptr<QOpenGLTexture> texture;
+    shared_ptr<QOpenGLTexture> textureN;
+
+    QString texturePath;
 
 public:
 
@@ -60,6 +67,8 @@ public:
     void parseObjFile(const QString &fileName);
 
     void setTexture(shared_ptr<QOpenGLTexture> t);
+    void setTextureN(shared_ptr<QOpenGLTexture> t);
+
 
     virtual void make();
     virtual void toGPU(shared_ptr<QGLShaderProgram> p);

@@ -38,7 +38,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="perspectiveTab">
        <attribute name="title">
@@ -926,6 +926,7 @@
     </property>
     <addaction name="action_obre_fitxer"/>
     <addaction name="action_obre_escena"/>
+    <addaction name="action_carregar_Animated_Scene"/>
     <addaction name="action_obre_dades"/>
     <addaction name="separator"/>
     <addaction name="action_save_frame_as_image"/>
@@ -934,6 +935,7 @@
     <addaction name="actionAbout_Qt"/>
     <addaction name="separator"/>
     <addaction name="action_exit"/>
+    <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuShaders">
     <property name="title">
@@ -1092,6 +1094,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="action_carregar_Animated_Scene">
+   <property name="text">
+    <string>Carregar Animated Scene</string>
    </property>
   </action>
  </widget>

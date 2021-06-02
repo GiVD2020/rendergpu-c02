@@ -38,6 +38,7 @@ public slots:
 
     void updateObject(shared_ptr<Object> obj);
     void updateScene(shared_ptr<Scene> sc);
+    //void updateAnimatedScene(shared_ptr<Scene> sc);
 
     void saveImage();
     void saveAnimation();
@@ -95,6 +96,8 @@ private:
 
     shared_ptr<QGLShaderProgram> program; // Per ars nomes es té un parell vertex-fragment
                                // Cal guardar-ne més d'un en la primera fase.
+
+    vector<shared_ptr<QGLShaderProgram>> programList;
 
     void initShader(const char* vertexShaderFile, const char* fragmentShaderFile);
     void initShadersGPU();
